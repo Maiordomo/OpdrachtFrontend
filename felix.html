@@ -1,0 +1,23 @@
+<h1>Felix zijn bestand</h1>
+<script>
+    function haalopbijpython(){
+        console.log("hij doet het");
+        fetch("http://127.0.0.1:5000/felix2")
+        .then(r => r.text())
+        .then(d => verwerk(d))
+    }
+    function verwerk(dedata){
+        console.log(dedata);
+        document.getElementById("uitkomst").innerHTML = dedata;
+    }
+    function slaoberop(){
+        let obernaam = document.getElementById("invoerveld").value;
+        fetch("http://127.0.0.1:5000/felix3/"+obernaam)
+    }
+</script>
+
+Voer de naam van de ober in: <input id="invoerveld">
+<button onclick="slaoberop()">Verstuur</button>
+<hr><hr><hr>
+<button onclick="haalopbijpython()">Klik hier</button>
+<div id="uitkomst"></div>
