@@ -1,0 +1,17 @@
+<h1>Felix zijn bestand</h1>
+<script>
+    function haalopbijpython(){
+        console.log("hij doet het");
+        fetch("http://127.0.0.1:5000/felix")
+        .then(r => r.text())
+        .then(d => verwerk(d))
+    }
+    function verwerk(dedata){
+        console.log(dedata);
+        document.getElementById("uitkomst").innerHTML = dedata;
+    }
+
+</script>
+
+<button onclick="haalopbijpython()">Klik hier</button>
+<div id="uitkomst"></div>
