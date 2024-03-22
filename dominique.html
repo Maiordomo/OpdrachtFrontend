@@ -1,0 +1,31 @@
+<script>
+    function haalreceptenop(){
+        console.log("recepten ophalen")
+        fetch("http://127.0.0.1:5000/recept2")
+        .then(r => r.text())
+        .then(d => verwerkrecepten(d))
+    }
+    function verwerkrecepten(derecepten){
+        // document.getElementById("dereceptendiv").innerHTML = derecepten;
+        let allereceptenarray = derecepten.split(",");
+        console.log(allereceptenarray)
+        for(let x = 0; x < allereceptenarray.length - 1; x++){ 
+            document.getElementById("dereceptendiv").innerHTML += `
+                <h1>Recept ${x+1}: ${allereceptenarray[x]}</h1>
+            `
+        }
+        function receptinleveren(){
+            console.log("receptinleveren");
+        }
+    }
+</script>
+
+<button onclick="haalreceptenop()"> Click Me</button>
+
+<div id="dereceptendiv"> Hier komen onze recepten </div>
+
+Naam:<input>
+<br>
+Waardering:<input>
+<br>
+<button onclick="receptinleveren()"> Recept Opslaan</button>
