@@ -2,7 +2,7 @@
 <script>
     function haalopbijpython(){
         console.log("hij doet het");
-        fetch("http://127.0.0.1:5000/felix")
+        fetch("http://127.0.0.1:5000/felix2")
         .then(r => r.text())
         .then(d => verwerk(d))
     }
@@ -10,8 +10,103 @@
         console.log(dedata);
         document.getElementById("uitkomst").innerHTML = dedata;
     }
-
+    function slaoberop(){
+        let obernaam = document.getElementById("invoerveld").value;
+        fetch("http://127.0.0.1:5000/felix3/"+obernaam)
+    }
 </script>
 
+Voer de naam van de ober in: <input id="invoerveld">
+<button onclick="slaoberop()">Verstuur</button>
+<hr><hr><hr>
 <button onclick="haalopbijpython()">Klik hier</button>
 <div id="uitkomst"></div>
+
+
+<hr>
+<hr>
+<hr>
+<hr>
+NIEUWvvvvvvv
+<hr>
+<script>
+    function haalreceptenop(){
+        fetch("http://127.0.0.1:5000/recept2")
+        .then(r => r.text() )
+        .then( d => verwerkrecepten(d) )
+
+    }
+    function verwerkrecepten(derecepten){
+        //document.getElementById("dereceptendiv").innerHTML = derecepten;
+        let allereceptenarray = derecepten.split(",");
+        console.log(allereceptenarray)
+        for(let x = 0; x < allereceptenarray.length - 1; x++){
+            document.getElementById("dereceptendiv").innerHTML += `
+                <h1>Recept ${x+1}: ${allereceptenarray[x]}</h1>
+            `
+            
+        }
+    }
+    function receptinleveren(){
+        console.log("receptinleveren");
+        let naamrecept = document.getElementById("naaminvoer").value;
+        let waarderingrecept = document.getElementById("waardeinvoer").value;
+        console.log(naamrecept);
+        console.log(waarderingrecept);
+//        fetch("http://127.0.0.1:5000/erik1/"+naamrecept+"/"+waarderingrecept)
+        fetch(`http://127.0.0.1:5000/erik1/${naamrecept}/${waarderingrecept}`)
+    }
+    function metdejson(){
+        fetch("http://127.0.0.1:5000/felixjson")
+        .then(r => r.json())
+        .then(d => verwerkdejson(d))
+    }
+    function verwerkdejson(allerecepten){
+        for(let x = 0; x < allerecepten.length; x++){
+            document.getElementById("dereceptendiv2").innerHTML += `
+                <h1>Recept ${x+1}: ${allerecepten[x].naam} - ${allerecepten[x].aantalsterren}</h1>
+            `
+            
+        }
+    }
+    function receptinleverenjson(){
+        let recept = {};
+        recept.naam = document.getElementById("naaminvoerjson").value;
+        recept.waardering = document.getElementById("waardeinvoerjson").value
+        console.log(recept)
+        let receptjson = JSON.stringify(recept);
+        fetch("http://127.0.0.1:5000/felixpost" , {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: receptjson
+            })
+    }
+</script>
+<button onclick="haalreceptenop()">Klik hier</button>
+<div id="dereceptendiv">Hier komen onze recepten</div>
+
+
+<hr><hr>
+
+Naam:<input id="naaminvoer">
+<br>
+Waardering:<input id="waardeinvoer">
+<br>
+<button onclick="receptinleveren()">Inleveren</button>
+
+<hr>
+HIER MET JSON VVVVV
+<hr>
+<button onclick="metdejson()">met de json</button>
+<div id="dereceptendiv2">Hier komen onze recepten</div>
+
+
+<hr><hr>
+Naam:<input id="naaminvoerjson">
+<br>
+Waardering:<input id="waardeinvoerjson">
+<br>
+<button onclick="receptinleverenjson()">Inleveren</button>
