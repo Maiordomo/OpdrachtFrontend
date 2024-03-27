@@ -1,0 +1,35 @@
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+nieuw
+<hr>
+Naam:<input>
+<br>waardering<input>
+<br>
+<button onclick="recepteninleveren()">Inleveren</button>
+
+
+<script> function haalreceptenop(){
+    console.log("recepten ophalen")
+    fetch("http://127.0.0.1:5000/recept2")
+    .then(r => r.text())
+    .then ( d => verwerkrecepten(d))
+   
+
+}
+function  verwerkrecepten(derecepten){
+  
+    //document.getElementById("dereceptendiv").innerHTML = derecepten;
+    let allereceptenarray = derecepten.split(",");
+    console.log(allereceptenarray)
+    for(let x = 0; x < allereceptenarray.length -1; x++){
+        document.getElementById("dereceptendiv").innerHTML += `
+        <h1>Recept ${x+1}: ${allereceptenarray[x]}</h1> `
+    }
+}
+
+</script>
+<button onclick="haalreceptenop()">Klick</button>
+<div id="dereceptendiv">hier komen onze recepten</div>
