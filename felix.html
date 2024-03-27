@@ -56,6 +56,34 @@ NIEUWvvvvvvv
 //        fetch("http://127.0.0.1:5000/erik1/"+naamrecept+"/"+waarderingrecept)
         fetch(`http://127.0.0.1:5000/erik1/${naamrecept}/${waarderingrecept}`)
     }
+    function metdejson(){
+        fetch("http://127.0.0.1:5000/felixjson")
+        .then(r => r.json())
+        .then(d => verwerkdejson(d))
+    }
+    function verwerkdejson(allerecepten){
+        for(let x = 0; x < allerecepten.length; x++){
+            document.getElementById("dereceptendiv2").innerHTML += `
+                <h1>Recept ${x+1}: ${allerecepten[x].naam} - ${allerecepten[x].aantalsterren}</h1>
+            `
+            
+        }
+    }
+    function receptinleverenjson(){
+        let recept = {};
+        recept.naam = document.getElementById("naaminvoerjson").value;
+        recept.waardering = document.getElementById("waardeinvoerjson").value
+        console.log(recept)
+        let receptjson = JSON.stringify(recept);
+        fetch("http://127.0.0.1:5000/felixpost" , {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: receptjson
+            })
+    }
 </script>
 <button onclick="haalreceptenop()">Klik hier</button>
 <div id="dereceptendiv">Hier komen onze recepten</div>
@@ -69,7 +97,19 @@ Waardering:<input id="waardeinvoer">
 <br>
 <button onclick="receptinleveren()">Inleveren</button>
 
+<hr>
+HIER MET JSON VVVVV
+<hr>
+<button onclick="metdejson()">met de json</button>
+<div id="dereceptendiv2">Hier komen onze recepten</div>
 
+
+<hr><hr>
+Naam:<input id="naaminvoerjson">
+<br>
+Waardering:<input id="waardeinvoerjson">
+<br>
+<button onclick="receptinleverenjson()">Inleveren</button>
 
 
 
