@@ -1,0 +1,14 @@
+nav{
+  background-color: #c5dacf;
+  text-align: center;
+}
+.carousel-container {
+      display: flex;
+      justify-content: center; /* Align container horizontally */
+      align-items: center; /* Align container vertically */
+      height: 100vh; /* Adjust height as needed */
+}
+h1 {
+    background-color: #80ced6;
+  }
+  
