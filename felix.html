@@ -3,8 +3,8 @@
 <h1>Felix zijn bestand 1</h1>
 <script>
     function haalopbijpython(){
-        console.log("hij doet het");
-        fetch("http://127.0.0.1:5000/felix2")
+        console.log("hij doet het VIA AZURE");
+        fetch("https://yc2403webapp.azurewebsites.net/felix2")
         .then(r => r.text())
         .then(d => verwerk(d))
     }
@@ -25,7 +25,7 @@
 Voer de naam van de ober in: <input id="invoerveld">
 <button onclick="slaoberop()">Verstuur</button>
 <hr><hr><hr>
-<button onclick="haalopbijpython()">Klik hier</button>
+<button onclick="haalopbijpython()">Klik hier VIA AZURE</button>
 <div id="uitkomst"></div>
 
 
