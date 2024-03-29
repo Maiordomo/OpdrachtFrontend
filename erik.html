@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <h1>Erik methode test pagina</h1>
+</head>
+
+
+
+<script>
+
+    function haalopbijpython() {
+        console.log("hij doet het VIA AZURE");
+        fetch("https://yc2403webapp.azurewebsites.net/erik")
+            .then(r => r.text())
+            .then(d => verwerk(d))
+    }
+
+    function verwerk(dedata) {
+        console.log(dedata);
+        document.getElementById("uitkomst").innerHTML = dedata;
+    }
+
+    function receptinleveren(){
+        console.log("receptinleveren");
+        let naamrecept = document.getElementById("naaminvoer").value;
+        let waarderingrecept = document.getElementById("waardeinvoer").value;
+        console.log(naamrecept);
+        console.log(waarderingrecept);
+//        fetch("http://127.0.0.1:5000/erik/"+naamrecept+"/"+waarderingrecept)
+        fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
+    }
+</script>
+
+<body>
+    <hr>
+    <hr>
+    <hr>
+    <button onclick="haalopbijpython()">Klik hier VIA AZURE</button>
+    <div id="uitkomst"></div>
+
+    <hr>
+    <hr>
+
+    Naam:<input id="naaminvoer">
+    <br>
+    Waardering:<input id="waardeinvoer">
+    <br>
+    <button onclick="receptinleveren()">Inleveren</button>
+</body>
+
+</html>
