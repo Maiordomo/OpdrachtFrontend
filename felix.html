@@ -37,7 +37,7 @@ NIEUWvvvvvvv
 <hr>
 <script>
     function haalreceptenop(){
-        fetch("http://127.0.0.1:5000/recept2")
+        fetch("https://yc2403webapp.azurewebsites.net/erik")
         .then(r => r.text() )
         .then( d => verwerkrecepten(d) )
 
@@ -59,11 +59,11 @@ NIEUWvvvvvvv
         let waarderingrecept = document.getElementById("waardeinvoer").value;
         console.log(naamrecept);
         console.log(waarderingrecept);
-//        fetch("http://127.0.0.1:5000/erik1/"+naamrecept+"/"+waarderingrecept)
-        fetch(`http://127.0.0.1:5000/erik1/${naamrecept}/${waarderingrecept}`)
+//        fetch("http://127.0.0.1:5000/erik/"+naamrecept+"/"+waarderingrecept)
+        fetch(`http://127.0.0.1:5000/erik/${naamrecept}/${waarderingrecept}`)
     }
     function metdejson(){
-        fetch("http://127.0.0.1:5000/felixjson")
+        fetch("https://yc2403webapp.azurewebsites.net:5000/felixjson")
         .then(r => r.json())
         .then(d => verwerkdejson(d))
     }
