@@ -4,7 +4,7 @@
 <script>
     function haalopbijpython(){
         console.log("hij doet het");
-        fetch("http://127.0.0.1:5000/felix2")
+        fetch(backendurl + "/felix2")
         .then(r => r.text())
         .then(d => verwerk(d))
     }
@@ -14,7 +14,7 @@
     }
     function slaoberop(){
         let obernaam = document.getElementById("invoerveld").value;
-        fetch("http://127.0.0.1:5000/felix3/"+obernaam)
+        fetch(backendurl + "/felix3/"+obernaam)
     }
     window.onload = function(){
         console.log("dit wordt geladen zodra de file felix2.html klaar is met laden");
@@ -37,7 +37,7 @@ NIEUWvvvvvvv
 <hr>
 <script>
     function haalreceptenop(){
-        fetch("http://127.0.0.1:5000/recept2")
+        fetch(backendurl + "/erik")
         .then(r => r.text() )
         .then( d => verwerkrecepten(d) )
 
@@ -60,10 +60,10 @@ NIEUWvvvvvvv
         console.log(naamrecept);
         console.log(waarderingrecept);
 //        fetch("http://127.0.0.1:5000/erik1/"+naamrecept+"/"+waarderingrecept)
-        fetch(`http://127.0.0.1:5000/erik1/${naamrecept}/${waarderingrecept}`)
+        fetch(backendurl + `/erik/${naamrecept}/${waarderingrecept}`)
     }
     function metdejson(){
-        fetch("http://127.0.0.1:5000/felixjson")
+        fetch(backendurl + "/felixjson")
         .then(r => r.json())
         .then(d => verwerkdejson(d))
     }
@@ -81,7 +81,7 @@ NIEUWvvvvvvv
         recept.waardering = document.getElementById("waardeinvoerjson").value
         console.log(recept)
         let receptjson = JSON.stringify(recept);
-        fetch("http://127.0.0.1:5000/felixpost" , {
+        fetch(backendurl + "/felixpost" , {
                 method: 'POST', // Specify the method
                 headers: {
                     'Content-Type': 'application/json', // Specify the content type
