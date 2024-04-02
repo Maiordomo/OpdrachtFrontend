@@ -91,6 +91,15 @@ NIEUWvvvvvvv
                 body: receptjson
             })
     }
+    function sladitpermanentop(){
+        let waarde = document.getElementById("sladitop").value;
+        console.log("opgeslagen"+waarde);
+        localStorage.setItem("mijngeheimekey", waarde)
+    }
+    function vraagwaardeop(){
+        let ooitopgeslagen = localStorage.getItem("mijngeheimekey");
+        alert(ooitopgeslagen)
+    }
 </script>
 <button onclick="haalreceptenop()">Klik hier</button>
 <div id="dereceptendiv">Hier komen onze recepten</div>
@@ -117,6 +126,10 @@ Naam:<input id="naaminvoerjson">
 Waardering:<input id="waardeinvoerjson">
 <br>
 <button onclick="receptinleverenjson()">Inleveren</button>
+<hr><hr><hr><hr><hr>
+<input id="sladitop">
+<button onclick="sladitpermanentop()">sla op</button>
+<button onclick="vraagwaardeop()">vraag op</button>
 
 
 
