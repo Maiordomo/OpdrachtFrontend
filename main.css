@@ -12,3 +12,12 @@ h1 {
     background-color: #80ced6;
   }
   
+#menubalk > div{
+  display: inline-block;
+  background-color: brown;
+  color:white;
+}
+#menubalk > div > a{
+  color : white;
+  padding: 4px;
+}
