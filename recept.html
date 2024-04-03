@@ -14,108 +14,57 @@
 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 			crossorigin="anonymous"
 		></script>
+
+		<script src="algemeen.js"></script>
+
+		<script>
+			window.onload = function(){
+					maakmenubalk();
+			}
+		</script>
+
 		<title>Recept Pagina</title>
 
 		<style>
 			div{
 				margin: 25px
 			}
-
-	
 		</style>
-	
-</head>
+		
+		<script> 
+			var url_string = window.location.href; // www.test.com?filename=test
+			var url = new URL(url_string);
+			var paramValue = url.searchParams.get("gid");
+			alert(paramValue)
+		</script>
+
+		<script>
+			function haalreceptdetailsop(){
+							console.log("dit zijn de receptdetails");
+							fetch("http://127.0.0.1:5000/receptdetails/"+paramValue)
+
+							}
+					haalreceptdetailsop();		
+		</script>
+
+	</head>
 
 	<body>
+		
 		<header>
-			<div
-				class="container"
-			>
-			<div class="row text-start">
-				<div class="col">
-					<a class="navbar-brand" href="#">
-						<img
-							src="https://img.freepik.com/free-vector/barbecue-logo-template-with-details_23-2149008099.jpg"
-							alt="Bootstrap"
-							width="30"
-							height="24"
-						/>
-					</a>
-				</div>
-
-				<div class="col d-flex align-items-center justify-content-center">
-					<a class="btn btn-primary center" href="#" role="button">Alle Recepten</a>
-				<!-- </div>
-				<div class="row col-12"> -->
-					<!-- <form class="w-50 me-3 center" role="search">
-						<input
-							type="search"
-							class="form-control"
-							placeholder="Zoek recept..."
-							aria-label="Search"
-						/>
-					</form> -->
-				</div>
-
-				<div class="col text-end">
-				
-					<a class="navbar-brand" href="#">
-						<img
-							src="https://static.vecteezy.com/system/resources/thumbnails/017/350/122/small/add-icon-design-png.png"
-							alt="Bootstrap"
-							width="30"
-							height="24"
-						/>
-					</a>
-				<!-- </div>
-
-				<div class="row col-3"> -->
-					<a class="navbar-brand" href="#">
-						<img
-							src="https://icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/user-244.png"
-							alt="Bootstrap"
-							width="30"
-							height="24"
-						/>
-					</a>
-				<!-- </div>
-
-				<div class="row col-3"> -->
-					<a class="navbar-brand" href="#">
-						<img
-							src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png"
-							alt="Bootstrap"
-							width="30"
-							height="24"
-						/>
-					</a>
-					</div>
-				</div>
-				</div>
-			</div>
-			<div class="row align-items-center justify-content-center" id="zoekbalk">
-				<div class="col-3 align-items-center justify-content-center">
-				<form class="d-flex" role="search">
-					<input
-						type="search"
-						class="form-control text-center"
-						placeholder="Zoek recept..."
-						aria-label="Search"
-					/>
-				</form>
-				</div>
-			</div>
-
+			<div id="menubalk"></div>
 		</header>
 
-		<div class="container">
-	
+		<main>
+			
+			<div class="container">
+
 			<div class="row ">
-				<div class="d-flex align-items-center justify-content-center">
+				<div class="d-flex align-items-center justify-content-center" id="fotogerecht">
 			<img
 				src="https://recipes.net/wp-content/uploads/2021/10/the-best-grilled-bbq-burger-recipe.jpg"
 				class="img-fluid"
-				alt="Afbeelding van het gerecht"
+				alt="Foto van het gerecht"
 			/>
 					</div>
 			</div>
@@ -145,6 +94,7 @@
           </span>
             </div>
         </div>
-   
+		</main>
+
 	</body>
 </html>
