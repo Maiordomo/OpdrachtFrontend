@@ -1,31 +1,38 @@
 <script>
     function haalreceptenop(){
-        console.log("recepten ophalen")
         fetch("http://127.0.0.1:5000/recept2")
-        .then(r => r.text())
-        .then(d => verwerkrecepten(d))
+        .then(r => r.text() )
+        .then( d => verwerkrecepten(d) )
+
     }
     function verwerkrecepten(derecepten){
-        // document.getElementById("dereceptendiv").innerHTML = derecepten;
+        //document.getElementById("dereceptendiv").innerHTML = derecepten;
         let allereceptenarray = derecepten.split(",");
         console.log(allereceptenarray)
-        for(let x = 0; x < allereceptenarray.length - 1; x++){ 
+        for(let x = 0; x < allereceptenarray.length - 1; x++){
             document.getElementById("dereceptendiv").innerHTML += `
                 <h1>Recept ${x+1}: ${allereceptenarray[x]}</h1>
             `
-        }
-        function receptinleveren(){
-            console.log("receptinleveren");
+            
         }
     }
+    function receptinleveren(){
+        console.log("receptinleveren");
+        let naamrecept = document.getElementById("naaminvoer").value;
+        let waarderingrecept = document.getElementById("waardeinvoer").value;
+        console.log(naamrecept);
+        console.log(waarderingrecept);
+        fetch("http://127.0.0.1:5000/erik1/"+naamrecept+"/"+waarderingrecept)
+        // fetch(`http://127.0.0.1:5000/erik1/${naamrecept}/${waarderingrecept}`)
+    }
 </script>
+<button onclick="haalreceptenop()">Klik hier</button>
+<div id="dereceptendiv">Hier komen onze recepten</div>
 
-<button onclick="haalreceptenop()"> Click Me</button>
+<hr><hr>
 
-<div id="dereceptendiv"> Hier komen onze recepten </div>
-
-Naam:<input>
+Naam:<input id="naaminvoer">
 <br>
-Waardering:<input>
+Waardering:<input id="waardeinvoer">
 <br>
-<button onclick="receptinleveren()"> Recept Opslaan</button>
+<button onclick="receptinleveren()">Inleveren</button>
