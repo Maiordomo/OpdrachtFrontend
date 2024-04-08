@@ -40,6 +40,9 @@ function maakmenubalk(){
         <div><a href="erik.html">testpagina 1 erik</a></div>
     
         `
+
+        <footer></footer>
+        
     }
 
     //<div><a href="index.html">home</a></div> 
