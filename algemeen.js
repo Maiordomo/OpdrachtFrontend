@@ -30,19 +30,23 @@ function maakmenubalk(){
     </div>
 </header>
 
-    </div>
-
-        
+    </div>       
         <div><a href="allerecepten.html">alle recepten</a></div>
         <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
         <div><a href="inloggen.html">inloggen</a></div>
         <div><a href="receptaanmaken.html">receptaanmaken</a></div>
         <div><a href="erik.html">testpagina 1 erik</a></div>
-    
-        `
-
-        <footer></footer>
         
+        `
+        document.getElementById("footerbalk").innerHTML = `
+        <footer>
+          <p>Bedankt voor het bezoeken van onze website! Fijne dag!</p>
+          <div class="footercontainer">
+            <div>Algemene voorwaarde</div>
+            <div>Privacybeleid</div>
+          </div>
+        </footer>   
+        `
     }
 
-    //<div><a href="index.html">home</a></div> 
+    //<div><a href="index.html">home</a></div>  style="text-align: center;"
