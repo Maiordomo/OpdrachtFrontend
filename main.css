@@ -11,6 +11,19 @@ nav{
 h1 {
     background-color: #80ced6;
   }
+
+ #menubalk{
+    background-color: aqua;
+  }
+  footer{
+    background-color: #a5119e;
+    text-align: center;
+
+  }
+  .footercontainer{ 
+    display: flex;
+    justify-content: space-between;
+  }
   
 /*#menubalk > div{
   display: inline-block;
