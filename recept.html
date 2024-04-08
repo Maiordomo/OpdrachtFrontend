@@ -28,6 +28,7 @@
 		<style>
 			div{
 				margin: 25px
+				background: 
 			}
 		</style>
 		
@@ -73,37 +74,80 @@
 			<div class="container">
 				
 				<div class="row" id="titelgerecht">
-					<h2>BBQ SPIES</h2>
+					<h2>van tabel_recept, recept_id, naam tonen</h2>
 				</div>
 				
-				<div class="row" id="faveshare">
+				<div id="faveshare">
 					<button type="button">Favoriet</button>
 					<button type="button">Share</button>
 				</div>
 
 				<div class="row" id="beoordeling">
-					Aantal sterren placeholder
+					Van tabel recept, recept_id: aantalsterren
 				</div>
 
+				<div id="beschrijving">
+					Van tabel recept, recept_id: beschrijving
+				</div>
+
+
 				<div class="row" id="moeilijkheidsgraad">
-					Moeilijkheidsgraad placeholder
+					Van tabel recept, recept_id: moeilijkheidsgraad
 				</div>
 
 				<div class="row" id="tag">
-					Tags placeholder
+					Van tabel tags, recept_id: tag_id op een rij 
 				</div>
 
 			<div class="container>">
+				
 				<div class="row" id="ingredienten">
 					<h3><b>Ingrediënten</b></h3>
-					Ongeorderde lijst van ingredienten ophalen
-
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+					</ul>
 				</div>
 
 
 			</div>
 
+			<div id="schrijfreview">
 
+				<h3>Schrijf hier je review!</h3>
+				
+				<div id="invoerveldnaam">
+					invoerveld om je naam in te vullen
+				</div>
+
+				<div id="hoeveelsterren">
+					invoerveld om aantal sterren op te geven
+				</div>
+
+				<div id="optioneelbeoordeling">
+					invoerveld met "Typ hier je beoordeling (optioneel)"
+				</div>
+
+
+				<div id="plaatsreviewbutton">
+				
+					<button type="button">Schrijf een review!</button>
+
+				</div>
+
+			</div>
+
+			<div id="gepostereview">
+
+				<div id="review">
+					van tabel review, recept_id: review
+				</div>
+
+			</div>
+
+			
 
 
 
@@ -116,10 +160,10 @@
 								
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Ingrediënten</b></li>
-                <li class="list-group-item">ingrediënt1</li>
-                <li class="list-group-item">ingrediënt2</li>
-                <li class="list-group-item">ingrediënt3</li>
-                <li class="list-group-item">ingrediënt4</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
             </ul>
 					
 					</div>
