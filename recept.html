@@ -28,6 +28,7 @@
 		<style>
 			div{
 				margin: 25px
+				background: 
 			}
 		</style>
 		
@@ -35,16 +36,25 @@
 			var url_string = window.location.href; // www.test.com?filename=test
 			var url = new URL(url_string);
 			var paramValue = url.searchParams.get("gid");
-			alert(paramValue)
+			
 		</script>
 
 		<script>
 			function haalreceptdetailsop(){
 							console.log("dit zijn de receptdetails");
-							fetch("http://127.0.0.1:5000/receptdetails/"+paramValue)
+							fetch(backendurl+"/receptdetails/"+paramValue).then(r=> r.json()).then(d=>toonreceptdetails(d))
 
 							}
 					haalreceptdetailsop();		
+		</script>
+
+		<script>
+
+			function toonreceptdetails(d){
+
+			document.getElementById("titelgerecht").innerHTML=d[0].naam
+			document.getElementById("beoordeling").innerHTML=d[0].aantalsterren
+			}
 		</script>
 
 	</head>
@@ -59,22 +69,97 @@
 			
 			<div class="container">
 
-			<div class="row ">
-				<div class="d-flex align-items-center justify-content-center" id="fotogerecht">
-			<img
-				src="https://recipes.net/wp-content/uploads/2021/10/the-best-grilled-bbq-burger-recipe.jpg"
-				class="img-fluid"
-				alt="Foto van het gerecht"
-			/>
+				<div class="row ">
+					<div class="d-flex align-items-center justify-content-center" id="fotogerecht">
+						<img
+							src="https://recipes.net/wp-content/uploads/2021/10/the-best-grilled-bbq-burger-recipe.jpg"
+							class="img-fluid"
+							alt="Foto van het gerecht"
+						/>
 					</div>
+				</div>
 			</div>
-		</div>
     
-		<div class="container">
+			<div class="container">
+				
+				<div class="row" id="titelgerecht">
+					<h2>van tabel_recept, recept_id, naam tonen</h2>
+				</div>
+				
+				<div id="faveshare">
+					<button type="button">Favoriet</button>
+					<button type="button">Share</button>
+				</div>
 
-		<h2>BBQ SPIES</h2>
+				<div class="row" id="beoordeling">
+					Van tabel recept, recept_id: aantalsterren
+				</div>
 
-		</div>
+				<div id="beschrijving">
+					Van tabel recept, recept_id: beschrijving
+				</div>
+
+
+				<div class="row" id="moeilijkheidsgraad">
+					Van tabel recept, recept_id: moeilijkheidsgraad
+				</div>
+
+				<div class="row" id="tag">
+					Van tabel tags, recept_id: tag_id op een rij 
+				</div>
+
+			<div class="container>">
+				
+				<div class="row" id="ingredienten">
+					<h3><b>Ingrediënten</b></h3>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+					</ul>
+				</div>
+
+
+			</div>
+
+			<div id="schrijfreview">
+
+				<h3>Schrijf hier je review!</h3>
+				
+				<div id="invoerveldnaam">
+					invoerveld om je naam in te vullen
+				</div>
+
+				<div id="hoeveelsterren">
+					invoerveld om aantal sterren op te geven
+				</div>
+
+				<div id="optioneelbeoordeling">
+					invoerveld met "Typ hier je beoordeling (optioneel)"
+				</div>
+
+
+				<div id="plaatsreviewbutton">
+				
+					<button type="button">Schrijf een review!</button>
+
+				</div>
+
+			</div>
+
+			<div id="gepostereview">
+
+				<div id="review">
+					van tabel review, recept_id: review
+				</div>
+
+			</div>
+
+			
+
+
+
 
         <div class="container">
             <div class="row">
@@ -84,10 +169,10 @@
 								
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Ingrediënten</b></li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
+                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
             </ul>
 					
 					</div>
