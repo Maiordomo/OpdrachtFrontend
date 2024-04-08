@@ -1,36 +1,42 @@
 <script>
     function uploadFile() {
-  const fileInput = document.getElementById('fileInput');
-  const file = fileInput.files[0];
+  // Define the elements
+const fileInput = document.getElementById('fileInput'); // The ID of your input type="file"
+const statusLabel = document.getElementById('statusLabel'); // The ID of an element to display the upload status
 
-  if (!file) {
-    alert("Selecteer een bestand om te uploaden.");
-    return;
-  }
 
-  // Vervang deze URL met je SAS URL
-  const sasUrl = "https://felixuploadimages.blob.core.windows.net/plaatjes?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-04-08T18:09:56Z&st=2024-04-08T10:09:56Z&sip=192.192.192.192&spr=https,http&sig=uN7cqj2Fc1SjPF1Nq5GioNXkJzSvgp3AsZMT5XfnSWA%3D";
-  const blobUrl = `${sasUrl}/${file.name}`;
-
-  fetch(blobUrl, {
-    method: 'PUT',
-    headers: {
-      'x-ms-blob-type': 'BlockBlob',
-      'Content-Type': file.type
-    },
-    body: file
-  })
-  .then(response => {
-    if (response.ok) {
-      alert("Afbeelding succesvol geüpload!");
-    } else {
-      alert("Upload mislukt. Statuscode: " + response.status);
+    const file = fileInput.files[0];
+    if (!file) {
+        console.error('No file selected for upload.');
+        statusLabel.textContent = 'No file selected for upload.';
+        return;
     }
-  })
-  .catch(error => {
-    console.error("Fout tijdens het uploaden:", error);
-  });
-}
+
+    // Construct the full SAS URL from your Azure portal information
+    const sasToken = 'sp=racwd&st=2024-04-08T11:34:46Z&se=2024-04-08T19:34:46Z&spr=https&sv=2022-11-02&sr=c&sig=G28MSrE8n0GI6RWbUZ3jI3lFiX64PVoECIIys5hUths%3D'; // Your SAS token without the leading "?"
+    const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web'; // URL to the Azure Blob Storage container
+    const blobName = file.name; // Use the file's name as the blob name or set your own
+    const fullUrl = `${blobServiceUrl}/${blobName}?${sasToken}`;
+
+        fetch(fullUrl, {
+            method: 'PUT',
+            headers: {
+                'x-ms-blob-type': 'BlockBlob',
+                'Content-Type': file.type,
+            },
+            body: file,
+        })  .then(response => {
+            if (response.ok) {
+            alert("Afbeelding succesvol geüpload!");
+            } else {
+            alert("Upload mislukt. Statuscode: " + response.status);
+            }
+        })
+        .catch(error => {
+            console.error("Fout tijdens het uploaden:", error);
+        });
+
+    }
 
 </script>
 <input type="file" id="fileInput" />
