@@ -1,0 +1,37 @@
+<script>
+    function uploadFile() {
+  const fileInput = document.getElementById('fileInput');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Selecteer een bestand om te uploaden.");
+    return;
+  }
+
+  // Vervang deze URL met je SAS URL
+  const sasUrl = "https://felixuploadimages.blob.core.windows.net/plaatjes?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-04-08T18:09:56Z&st=2024-04-08T10:09:56Z&sip=192.192.192.192&spr=https,http&sig=uN7cqj2Fc1SjPF1Nq5GioNXkJzSvgp3AsZMT5XfnSWA%3D";
+  const blobUrl = `${sasUrl}/${file.name}`;
+
+  fetch(blobUrl, {
+    method: 'PUT',
+    headers: {
+      'x-ms-blob-type': 'BlockBlob',
+      'Content-Type': file.type
+    },
+    body: file
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Afbeelding succesvol geüpload!");
+    } else {
+      alert("Upload mislukt. Statuscode: " + response.status);
+    }
+  })
+  .catch(error => {
+    console.error("Fout tijdens het uploaden:", error);
+  });
+}
+
+</script>
+<input type="file" id="fileInput" />
+<button onclick="uploadFile()">Upload Afbeelding</button>
