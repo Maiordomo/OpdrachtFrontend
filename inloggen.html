@@ -9,41 +9,73 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
-        <script src="algemeen.js"></script>
-        <script>
-            window.onload = function(){
-                maakmenubalk();
+    <script src="algemeen.js"></script>
+    <script>
+        window.onload = function () {
+            maakmenubalk();
+        }
+
+        function sladitpermanentop() {
+            let gebruikersnaam = document.getElementById("gebruikersnaam").value;
+            let wachtwoord = document.getElementById("wachtwoord").value;
+            // let emailadres = document.getElementById("emailadres").value;
+            // let geboortedatum = document.getElementById("geboortedatum").value;
+            // let geslacht = document.getElementById("geslacht").value;
+            // let woonplaats = document.getElementById("woonplaats").value;
+
+            let userData = {
+                gebruikersnaam: gebruikersnaam,
+                wachtwoord: wachtwoord
+                // emailadres: emailadres,
+                // geboortedatum: geboortedatum,
+                // geslacht: geslacht,
+                // woonplaats: woonplaats
+            };
+
+            fetch(backendurl + "/login", {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: JSON.stringify(userData)
+            })
+
+                .then(r => r.text())
+                .then(d => verwerkantwoord(d, JSON.stringify(userData)))
+        }
+
+        function verwerkantwoord(a, b) {
+            console.log(a)
+            if (a == "ingelogd") {
+                localStorage.setItem("userData", b);
+
+                window.location.href = "accountpagina.html";
             }
-        </script>
+            else { alert("Het is niet gelukt") }
+        }
+
+        function vraagwaardeop() {
+            let userData = localStorage.getItem("userData");
+            if (userData) {
+                userData = JSON.parse(userData);
+
+                document.getElementById("gebruikersnaam").value = userData.gebruikersnaam;
+                document.getElementById("wachtwoord").value = userData.wachtwoord;
+                document.getElementById("emailadres").value = userData.emailadres;
+                document.getElementById("geboortedatum").value = userData.geboortedatum;
+                document.getElementById("geslacht").value = userData.geslacht;
+                document.getElementById("woonplaats").value = userData.woonplaats;
+            } else {
+                console.log("No user data found in localStorage");
+            }
+        }
+    </script>
     <title>Backyard Recipes - Account Aanmaken</title>
 </head>
 
 <body>
     <div id="menubalk"></div>
-    <header class="py-3 mb-3 border-bottom">
-        <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-            <img src="logo.png" class="img-thumbnail" alt="...">
-            <div class="d-flex align-items-center">
-                <form class="w-50 me-3" role="search">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                </form>
-
-                <div class="flex-shrink-0 dropdown pull"></div>
-                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                </a>
-                <ul class="dropdown-menu text-small shadow">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
     <br>
     <br>
     <div class="container-sm">
@@ -62,38 +94,38 @@
                 </figure>
                 <br>
                 <br>
-                <form action="http://127.0.0.1:5000/login" method="POST">
-                    <div class="mb-3">
-                        <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
-                        <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
-                    </div>
-                    <div class="mb-3">
-                        <label for="wachtwoord" class="form-label">Wachtwoord</label>
-                        <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
-                    </div>
-                    <div class="container-sm">
-                        <figure class="text-end">
-                            <a href="/accountaanmaken.html" class="link-warning">Account aanmaken</a>
-                        </figure>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <input class="btn btn-warning" type="submit" value="Inloggen">
-                    </div>
-                    <br>
-                    <div class="container-sm">
-                        <figure class="text-center">
-                            <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
-                        </figure>
-                    </div>
-                </form>
+                <!-- <form action="http://127.0.0.1:5000/login" method="POST"> -->
+                <div class="mb-3">
+                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                </div>
+                <div class="mb-3">
+                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                    <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
+                </div>
+                <div class="container-sm">
+                    <figure class="text-end">
+                        <a href="/accountaanmaken.html" class="link-warning">Account aanmaken</a>
+                    </figure>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
+                </div>
+                <br>
+                <div class="container-sm">
+                    <figure class="text-center">
+                        <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
+                    </figure>
+                </div>
+                <!-- </form> -->
+            </div>
         </div>
-    </div>
-    <br>
-    <br>
+        <br>
+        <br>
 </body>
 
 </html>

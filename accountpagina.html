@@ -9,12 +9,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
-        <script>
-            function haalopbijpython(){
-                console.log("hij doet het");
-                fetch("http://127.0.0.1:5000/accountpagina/")
+    <script>
+        function haalopbijpython() {
+            console.log("hij doet het");
+            fetch("http://127.0.0.1:5000/accountpagina/")
+        }
+
+        window.onload = function () {
+
+            renderUserData();
+        }
+
+        function renderUserData() {
+            let userData = localStorage.getItem("userData");
+            if (userData) {
+                userData = JSON.parse(userData);
+
+
+                document.getElementById("gebruikersnaam").innerText = userData.gebruikersnaam;
+                document.getElementById("wachtwoord").innerText = userData.wachtwoord;
+                document.getElementById("emailadres").innerText = userData.emailadres;
+                document.getElementById("geboortedatum").innerText = userData.geboortedatum;
+                document.getElementById("geslacht").innerText = userData.geslacht;
+                document.getElementById("woonplaats").innerText = userData.woonplaats;
+
+            } else {
+                console.log("No user data found in localStorage");
             }
-        </script>
+        }
+
+    </script>
     <title>Backyard Recipes - Account Aanmaken</title>
 </head>
 
@@ -85,28 +109,28 @@
                 <br>
                 <br>
                 <div class="mb-3 text-center">
-                    <label class="form-label">Gebruikersnaam</label>
-                    <p class="form-control-static" id="gebruikersnaam">{{ gebruikersnaam }}</p>
+                    <label class="form-label">Gebruikersnaam:</label>
+                    <p class="form-control-static" id="gebruikersnaam"></p>
                 </div>
                 <div class="mb-3 text-center">
-                    <label class="form-label">Wachtwoord</label>
-                    <p class="form-control-static" id="wachtwoord">{{ wachtwoord }}</p>
+                    <label class="form-label">Wachtwoord:</label>
+                    <p class="form-control-static" id="wachtwoord"></p>
                 </div>
                 <div class="mb-3 text-center">
-                    <label class="form-label">Emailadres</label>
-                    <p class="form-control-static" id="emailadres">{{ email }}</p>
+                    <label class="form-label">Emailadres:</label>
+                    <p class="form-control-static" id="emailadres"></p>
                 </div>
                 <div class="mb-3 text-center">
-                    <label class="form-label">Geboortedatum</label>
-                    <p class="form-control-static" id="geboortedatum">{{ geboortedatum }}</p>
+                    <label class="form-label">Geboortedatum:</label>
+                    <p class="form-control-static" id="geboortedatum"></p>
                 </div>
                 <div class="mb-3 text-center">
-                    <label class="form-label">Geslacht</label>
-                    <p class="form-control-static" id="geslacht">{{ geslacht }}</p>
+                    <label class="form-label">Geslacht:</label>
+                    <p class="form-control-static" id="geslacht"></p>
                 </div>
                 <div class="mb-3 text-center">
-                    <label class="form-label">Woonplaats</label>
-                    <p class="form-control-static" id="woonplaats">{{ woonplaats }}</p>
+                    <label class="form-label">Woonplaats:</label>
+                    <p class="form-control-static" id="woonplaats"></p>
                 </div>
                 <br>
                 <br>
