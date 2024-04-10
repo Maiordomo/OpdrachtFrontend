@@ -30,6 +30,10 @@
 				margin: 25px
 				
 			}
+
+			div{
+
+			}
 		</style>
 		
 		<script> 
@@ -52,12 +56,21 @@
 
 			function toonreceptdetails(d){
 
-			document.getElementById("titelgerecht").innerHTML=d[0].naam
-			document.getElementById("beoordeling").innerHTML=d[0].aantalsterren
-			document.getElementById("beschrijving").innerHTML=d[0].beschrijving
-			document.getElementById("moeilijkheidsgraad").innerHTML=d[0].moeilijkheidsgraad
+			document.getElementById("titelgerecht").innerHTML=d["recept"].naam
+			document.getElementById("beoordeling").innerHTML=d["recept"].aantalsterren
+			document.getElementById("beschrijving").innerHTML=d["recept"].beschrijving
+			document.getElementById("moeilijkheidsgraad").innerHTML=d["recept"].moeilijkheidsgraad
+			
+			let ingredient = (d["ingredient"])
+			ingredient.forEach((item)=>{
+			document.getElementById("lijstingredient").innerHTML = document.getElementById("lijstingredient").innerHTML + "<li>" + item.naam + "</li>"
+			})
+			
 			}
+
 		</script>
+
+		
 
 	</head>
 
@@ -112,14 +125,19 @@
 
 			<div class="container>">
 				
-				<div class="row" id="ingredienten">
+				<div class="row" id="ingredient">
 					<h3><b>Ingrediënten</b></h3>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
-						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
-						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
-						<li class="list-group-item">van tabel_ingredient, recept_id, tonen: volgorde, hoeveelheid, naam</li>
+					<ul id="lijstingredient">
+
 					</ul>
+					
+				</div>
+
+				<div id="stappen">
+					<h3><b>Bereiding</b></h3>
+					<ol id="lijststappen">
+
+					</ol>
 				</div>
 
 
@@ -158,30 +176,10 @@
 
 			</div>
 
-			
-
-
-
-
-        <div class="container">
-            <div class="row">
-							
-							<span class="col-4 border border-danger">
-							<div class="col-4">
-								
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Ingrediënten</b></li>
-                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
-                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
-                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
-                <li class="list-group-item">van tabel_ingredient: recept_id, tonen: volgorde, hoeveelheid, naam</li>
-            </ul>
-					
-					</div>
-          </span>
-            </div>
-        </div>
+        
 		</main>
+<footer id="footerbalk">
 
+</footer>
 	</body>
 </html>
