@@ -56,6 +56,11 @@
 			ingredient.forEach((item)=>{
 			document.getElementById("lijstingredient").innerHTML = document.getElementById("lijstingredient").innerHTML + "<li>" + item.hoeveelheid + " " + item.naam + "</li>"
 			})
+
+			let stap = (d["stappen"])
+			stap.forEach((item)=>{
+			document.getElementById("lijststappen").innerHTML = document.getElementById("lijststappen").innerHTML + "<li>" + item.Stapbeschrijving + "</li>"
+			})
 			
 			}
 
@@ -138,7 +143,7 @@
 				<div class="row" id="stappen">
 					<h3><b>Bereiding</b></h3>
 					<ol id="lijststappen">
-						innerjoin stappen en recept
+						
 					</ol>
 				</div>
 
