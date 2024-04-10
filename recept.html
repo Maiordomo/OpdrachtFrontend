@@ -25,16 +25,7 @@
 
 		<title>Recept Pagina</title>
 
-		<style>
-			div{
-				margin: 25px
-				
-			}
-
-			div{
-
-			}
-		</style>
+		
 		
 		<script> 
 			var url_string = window.location.href; // www.test.com?filename=test
@@ -63,14 +54,25 @@
 			
 			let ingredient = (d["ingredient"])
 			ingredient.forEach((item)=>{
-			document.getElementById("lijstingredient").innerHTML = document.getElementById("lijstingredient").innerHTML + "<li>" + item.naam + "</li>"
+			document.getElementById("lijstingredient").innerHTML = document.getElementById("lijstingredient").innerHTML + "<li>" + item.hoeveelheid + " " + item.naam + "</li>"
 			})
 			
 			}
 
 		</script>
 
-		
+			<link rel="stylesheet" href="main.css">
+				
+			<style>div{
+					margin: 25px
+					
+				}
+
+
+				div{
+
+				}
+			</style>	
 
 	</head>
 
@@ -107,20 +109,20 @@
 				</div>
 
 				<div class="row" id="beoordeling">
-					Van tabel recept, recept_id: aantalsterren
+					
 				</div>
 
 				<div id="beschrijving">
-					Van tabel recept, recept_id: beschrijving
+					
 				</div>
 
 
 				<div class="row" id="moeilijkheidsgraad">
-					Van tabel recept, recept_id: moeilijkheidsgraad
+					
 				</div>
 
 				<div class="row" id="tag">
-					Van tabel tags, recept_id: tag_id op een rij 
+					innerjoin tags en recept  
 				</div>
 
 			<div class="container>">
@@ -133,10 +135,10 @@
 					
 				</div>
 
-				<div id="stappen">
+				<div class="row" id="stappen">
 					<h3><b>Bereiding</b></h3>
 					<ol id="lijststappen">
-
+						innerjoin stappen en recept
 					</ol>
 				</div>
 
