@@ -3,26 +3,38 @@ nav{
   text-align: center;
 }
 .carousel-container {
-      display: flex;
-      justify-content: center; /* Align container horizontally */
-      align-items: center; /* Align container vertically */
-      height: 100vh; /* Adjust height as needed */
+  display: flex;
+  justify-content: center; /* Align container horizontally */
+  align-items: center; /* Align container vertically */
+  width: 100%; /* Make the image fill the carousel container */
+  height: auto; /* Maintain aspect ratio */
+
+    
+}
+.carousel-inner{
+  height: 300px;
 }
 h1 {
     background-color: #80ced6;
   }
 
  #menubalk{
-    background-color: aqua;
+    background-color: rgb(36, 172, 59);
+    line-height: 100px;
+   
   }
   footer{
     background-color: #a5119e;
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  
 
   }
   .footercontainer{ 
     display: flex;
     justify-content: space-between;
+  
   }
   
 /*#menubalk > div{
@@ -30,6 +42,8 @@ h1 {
   background-color: brown;
   color:white;
 }
+  position: absolute;
+    bottom: 0;
 #menubalk > div > a{
   color : white;
   padding: 4px;
