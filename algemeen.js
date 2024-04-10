@@ -1,6 +1,4 @@
 // let backendurl = "https://yc2403webapp.azurewebsites.net"
-let backendurl = "http://127.0.0.1:5000"
-
 
 function maakmenubalk() {
     document.getElementById("menubalk").innerHTML = `
@@ -32,22 +30,23 @@ function maakmenubalk() {
 </header>
 
     </div>       
-        <div><a href="allerecepten.html">alle recepten</a></div>
-        <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
-        <div><a href="inloggen.html">inloggen</a></div>
-        <div><a href="receptaanmaken.html">receptaanmaken</a></div>
-        <div><a href="erik.html">testpagina 1 erik</a></div>
-        
+    <div><a href="allerecepten.html">alle recepten</a></div>
+    <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
+    <div><a href="inloggen.html">inloggen</a></div>
+    <div><a href="receptaanmaken.html">receptaanmaken</a></div>
+    <div><a href="erik.html">testpagina 1 erik</a></div>
+    
         `;
     document.getElementById("footerbalk").innerHTML = `
-        <footer>
-          <p>Bedankt voor het bezoeken van onze website! Fijne dag!</p>
-          <div class="footercontainer">
-            <div>Algemene voorwaarde</div>
-            <div>Privacybeleid</div>
-          </div>
+        <footer class="fixed-bottom container-fluid">
+            <div class="row">
+                <div class=" col-12">Bedankt voor het bezoeken van onze website! Fijne dag!</div>
+                <div class="col-md-4 col-12">Algemene voorwaarde</div>
+                <div class="col-md-4 offset-md-4 col-12">Privacybeleid</div>
+            </div>
         </footer>   
         `
 }
+
 
 //<div><a href="index.html">home</a></div>  style="text-align: center;"
