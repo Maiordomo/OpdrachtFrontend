@@ -3,33 +3,77 @@ nav{
   text-align: center;
 }
 .carousel-container {
-      display: flex;
-      justify-content: center; /* Align container horizontally */
-      align-items: center; /* Align container vertically */
-      height: 100vh; /* Adjust height as needed */
+  display: flex;
+  justify-content: center; /* Align container horizontally */
+  align-items: center; /* Align container vertically */
+  width: 100%; /* Make the image fill the carousel container */
+  height: auto; /* Maintain aspect ratio */
+
+    
+}
+.carousel-inner{
+  height: 300px;
 }
 h1 {
     background-color: #80ced6;
   }
 
  #menubalk{
-    background-color: aqua;
+    background-color: rgb(36, 172, 59);
+    line-height: 100px;
+   
   }
   footer{
     background-color: #a5119e;
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  
 
   }
   .footercontainer{ 
     display: flex;
     justify-content: space-between;
-  }
   
+  }
+
+
+
+
+
+
+.button-aanmaken {
+  background-color: #eedd1b;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: rgb(16, 15, 15);
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-aanmaken:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
 /*#menubalk > div{
   display: inline-block;
   background-color: brown;
   color:white;
 }
+  position: absolute;
+    bottom: 0;
 #menubalk > div > a{
   color : white;
   padding: 4px;

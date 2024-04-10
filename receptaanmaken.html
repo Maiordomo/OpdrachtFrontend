@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recept aanmaken</title>
     <script src="algemeen.js"></script>
     <script>
-        window.onload = function(){
+        window.onload = function () {
             maakmenubalk();
         }
     </script>
+    
+    
+    <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <div id="menubalk"></div>
-    <h1>recept aanmaken</h1>
+    <h1>Recept aanmaken</h1>
+    
+
+
+    <div>
+        <h3>Beschrijving Stap 1: </h3>
+        <input type="text" id="stapinvoer" style="height:100px; width:700px;"/>
+        <br>
+        <button onclick="staptoevoegen()">Voeg stap toe x</button>
+        <br>
+        <br>
+        <input type="file" id="fileInput"/>
+        <button onclick="uploadFile()">Upload Afbeelding</button>
+        <br>
+        <button class="button-aanmaken" role="button">text</button>
+    </div>
+    <br>
+    <div id="footerbalk"></div>
 </body>
+
 </html>
