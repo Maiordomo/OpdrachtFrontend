@@ -8,11 +8,18 @@ function maakmenubalk() {
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <!-- Logo -->
         <a href="index.html"><img src="logo.png" class="img-thumbnail" alt="..."></a>
-
-        <!-- Search Form -->
-        <form class="w-50 mx-3" role="search">
-            <input type="search" class="form-control" placeholder="Zoek recept..." aria-label="Search">
+        
+        <div class="col d-flex align-items-center justify-content-center">
+            <a class="btn btn-primary" href="allerecepten.html" role="button">Alle recepten</a>
+        </div>
+      
+      <!-- Search Form -->
+      <div class="row align-items-center justify-content-center" id="zoekbalk">
+        <form class="w-200 mx-3" role="search">
+          <input type="search" class="form-control" placeholder="Zoek recept..." aria-label="Search">
         </form>
+      </div>
+      
 
         <!-- Dropdown Menu -->
         <div class="flex-shrink-0 dropdown pull"></div>
@@ -41,7 +48,7 @@ function maakmenubalk() {
         `;
     document.getElementById("footerbalk").innerHTML = `
     <div id="footerbalk"></div>
-        <footer class="fixed-bottom container-fluid">
+        <footer class=" container-fluid">
             <div class="row">
                 <div class=" col-12">Bedankt voor het bezoeken van onze website! Fijne dag!</div>
                 <div class="col-md-4 col-12">Algemene voorwaarde</div>
@@ -99,7 +106,37 @@ function staptoevoegen() {
     console.log("stapinleveren");
     let stap = document.getElementById("stapinvoer").value;
     console.log(stap);
+
     
-    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"})
+    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"}).then(response => {
+        if (response.ok) {
+            alert("Stap succesvol geüpload!");
+        } else {
+            alert("Upload mislukt. Statuscode: " + response.status);
+        }
+    })
+        .catch(error => {
+            console.error("Fout tijdens het uploaden:", error);
+        });     
+    //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
+}
+
+function receptnaamtoevoegen() {
+    console.log("naaminvoer");
+    let naam = document.getElementById("naaminvoer").value;
+    console.log(naam);
+    
+
+    
+    fetch("http://127.0.0.1:5000/receptaanmaken/"+naam,{mode:"cors"}).then(response => {
+        if (response.ok) {
+            alert("Recept Template succesvol gecreëerd!");
+        } else {
+            alert("Template mislukt. Statuscode: " + response.status);
+        }
+    })
+        .catch(error => {
+            console.error("Fout tijdens het creëren:", error);
+        });     
     //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
 }
