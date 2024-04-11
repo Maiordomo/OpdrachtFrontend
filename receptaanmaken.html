@@ -33,17 +33,17 @@
     </script>
 
 
-    <link rel="stylesheet" href="main2.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <div id="menubalk"></div>
     <h1>Recept aanmaken</h1>
     <br>
-    <input id="" type="text" placeholder="Naam van het recept opslaan..."
+    <input id="naaminvoer" type="text" placeholder="Naam van het recept opslaan..."
         style="height:25px; width:350px;" />
     <br>
-    <button class="button-52" onclick="">Recept template creëren</button>
+    <button class="button-52" onclick="receptnaamtoevoegen()">Recept template creëren</button>
 
     
     <h3> Omscrhijving</h3>
@@ -59,7 +59,7 @@
     </div>
     <button class="button-52" onclick="">Ingrëdienten toeveogen</button>
 
-    <div class="container">
+    <div class="container2">
         <h3 id="staptext"></h3>
         <input type="text" id="stapinvoer" placeholder="Omschrijving van de stap..." style="height:100px; width:700px;" />
         <br>
@@ -71,7 +71,7 @@
         <button onclick="uploadFile()">Upload Afbeelding</button>
         <br>
         <br>
-        <button id="myBtn">[+] Naar volgende stap</button>
+        <button id="myBtn">[+] Naar de volgende stap</button>
     </div>
   
 
