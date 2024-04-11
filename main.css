@@ -11,6 +11,16 @@ nav{
 
     
 }
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  margin-top: 10px; /* Add some top margin to create space between the button and the search form */
+}
+
+
 .carousel-inner{
   height: 300px;
   margin-top: 130px;
