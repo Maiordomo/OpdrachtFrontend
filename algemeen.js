@@ -106,7 +106,17 @@ function staptoevoegen() {
     console.log("stapinleveren");
     let stap = document.getElementById("stapinvoer").value;
     console.log(stap);
+
     
-    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"})
+    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"}).then(response => {
+        if (response.ok) {
+            alert("Stap succesvol geüpload!");
+        } else {
+            alert("Upload mislukt. Statuscode: " + response.status);
+        }
+    })
+        .catch(error => {
+            console.error("Fout tijdens het uploaden:", error);
+        });     
     //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
 }
