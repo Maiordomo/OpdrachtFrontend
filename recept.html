@@ -58,10 +58,11 @@
 			})
 
 			let stap = (d["stappen"])
-			stap.forEach((item)=>{
-			document.getElementById("lijststappen").innerHTML = document.getElementById("lijststappen").innerHTML + "<li>" + item.Stapbeschrijving + "</li>"
+			stap.forEach((item, i)=>{
+			document.getElementById("lijststappen").innerHTML = document.getElementById("lijststappen").innerHTML + "<li><span> Stap " + (i+1) + ". </span>" + item.Stapbeschrijving + "</li>"
 			})
 			
+			let ster = 
 			}
 
 		</script>
@@ -77,7 +78,17 @@
 				div{
 
 				}
+
+			#lijststappen li span{
+				font-weight: 500;
+			}
+
+			#lijststappen li{
+				list-style-type: none; 
+				margin-bottom: 1.2rem;
+			}
 			</style>	
+			
 
 	</head>
 
@@ -142,9 +153,9 @@
 
 				<div class="row" id="stappen">
 					<h3><b>Bereiding</b></h3>
-					<ol id="lijststappen">
+					<ul id="lijststappen">
 						
-					</ol>
+					</ul>
 				</div>
 
 
