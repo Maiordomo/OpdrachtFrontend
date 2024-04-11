@@ -1,4 +1,5 @@
 // let backendurl = "https://yc2403webapp.azurewebsites.net"
+let backendurl = "http://127.0.0.1:5000/"
 
 function maakmenubalk() {
     document.getElementById("menubalk").innerHTML = `
