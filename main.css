@@ -13,22 +13,39 @@ nav{
 }
 .carousel-inner{
   height: 300px;
+  margin-top: 130px;
 }
 h1 {
     background-color: #80ced6;
   }
 
- #menubalk{
+ header{
     background-color: rgb(36, 172, 59);
-    line-height: 100px;
+    height: 130px;
    
+  }
+
+  .linkjes{
+    top: 130px;
+    position: absolute;
+    right: 30px;
+    background-color: #eedd1b;
+    padding: 20px;
+    border-radius: 12px;
+    z-index: 1000;
+  }
+  .linkjes a{
+    color: fff;
+    font-weight: bold;
+    font-size: 0.7rem;  
   }
   footer{
     background-color: #a5119e;
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-  
+    height: 50px;
+    font-size: 0.7rem;
 
   }
   .footercontainer{ 

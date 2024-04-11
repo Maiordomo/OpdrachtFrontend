@@ -1,35 +1,134 @@
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-nieuw
-<hr>
-Naam:<input>
-<br>waardering<input>
-<br>
-<button onclick="recepteninleveren()">Inleveren</button>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    bababab
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script src="algemeen.js"></script>
+    <script>
+        window.onload = function () {
+            maakmenubalk();
+        }
 
-<script> function haalreceptenop(){
-    console.log("recepten ophalen")
-    fetch("http://127.0.0.1:5000/recept2")
-    .then(r => r.text())
-    .then ( d => verwerkrecepten(d))
-   
+        function sladitpermanentop() {
+            let gebruikersnaam = document.getElementById("gebruikersnaam").value;
+            let wachtwoord = document.getElementById("wachtwoord").value;
+            // let emailadres = document.getElementById("emailadres").value;
+            // let geboortedatum = document.getElementById("geboortedatum").value;
+            // let geslacht = document.getElementById("geslacht").value;
+            // let woonplaats = document.getElementById("woonplaats").value;
 
-}
-function  verwerkrecepten(derecepten){
-  
-    //document.getElementById("dereceptendiv").innerHTML = derecepten;
-    let allereceptenarray = derecepten.split(",");
-    console.log(allereceptenarray)
-    for(let x = 0; x < allereceptenarray.length -1; x++){
-        document.getElementById("dereceptendiv").innerHTML += `
-        <h1>Recept ${x+1}: ${allereceptenarray[x]}</h1> `
-    }
-}
+            let userData = {
+                gebruikersnaam: gebruikersnaam,
+                wachtwoord: wachtwoord
+                // emailadres: emailadres,
+                // geboortedatum: geboortedatum,
+                // geslacht: geslacht,
+                // woonplaats: woonplaats
+            };
 
-</script>
-<button onclick="haalreceptenop()">Klick</button>
-<div id="dereceptendiv">hier komen onze recepten</div>
+            fetch(backendurl + "/login", {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: JSON.stringify(userData)
+            })
+
+                .then(r => r.text())
+                .then(d => verwerkantwoord(d, JSON.stringify(userData)))
+        }
+
+        function verwerkantwoord(a, b) {
+            console.log(a)
+            if (a == "ingelogd") {
+                localStorage.setItem("userData", b);
+
+                window.location.href = "accountpagina.html";
+            }
+            else { alert("Het is niet gelukt") }
+        }
+
+        function vraagwaardeop() {
+            let userData = localStorage.getItem("userData");
+            if (userData) {
+                userData = JSON.parse(userData);
+
+                document.getElementById("gebruikersnaam").value = userData.gebruikersnaam;
+                document.getElementById("wachtwoord").value = userData.wachtwoord;
+                document.getElementById("emailadres").value = userData.emailadres;
+                document.getElementById("geboortedatum").value = userData.geboortedatum;
+                document.getElementById("geslacht").value = userData.geslacht;
+                document.getElementById("woonplaats").value = userData.woonplaats;
+            } else {
+                console.log("No user data found in localStorage");
+            }
+        }
+    </script>
+    <title>Backyard Recipes - Account Aanmaken</title>
+</head>
+
+<body>
+    <div id="menubalk"></div>
+    <br>
+    <h1>etetetet</h1>
+    <br>
+    <div class="container-sm">
+        <div class="row">
+            <div class="row-cols-sm-1">
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <p>
+                        <h2>Maak een account aan om het maximale uit Backyard
+                            Recipes te halen!</h2>
+                        </p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Some product owner at <cite title="Source Title">YoungCapital</cite>
+                    </figcaption>
+                </figure>
+                <br>
+                <br>
+                <!-- <form action="http://127.0.0.1:5000/login" method="POST"> -->
+                <div class="mb-3">
+                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                </div>
+                <div class="mb-3">
+                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                    <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
+                </div>
+                <div class="container-sm">
+                    <figure class="text-end">
+                        <a href="/accountaanmaken.html" class="link-warning">Account aanmaken</a>
+                    </figure>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
+                </div>
+                <br>
+                <div class="container-sm">
+                    <figure class="text-center">
+                        <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
+                    </figure>
+                </div>
+                <!-- </form> -->
+            </div>
+        </div>
+        <br>
+        <br>
+        <div id="footerbalk">de footer</div>
+</body>
+
+</html>

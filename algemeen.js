@@ -2,15 +2,15 @@
 
 function maakmenubalk() {
     document.getElementById("menubalk").innerHTML = `
-    <div id="menubalk" class="fixed-top">
-    <header class="py-3 mb-3 border-bottom">
+    
+    <header class="py-3 mb-3 border-bottomd fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <!-- Logo -->
         <a href="index.html"><img src="logo.png" class="img-thumbnail" alt="..."></a>
 
         <!-- Search Form -->
         <form class="w-50 mx-3" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            <input type="search" class="form-control" placeholder="Zoek recept..." aria-label="Search">
         </form>
 
         <!-- Dropdown Menu -->
@@ -26,18 +26,20 @@ function maakmenubalk() {
             <li><a class="dropdown-item" href="#">Sign out</a></li>
         </ul>
     </div>
-
+    <link rel="stylesheet" href="main.css">
 </header>
 
-    </div>       
-    <div><a href="allerecepten.html">alle recepten</a></div>
-    <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
-    <div><a href="inloggen.html">inloggen</a></div>
-    <div><a href="receptaanmaken.html">receptaanmaken</a></div>
-    <div><a href="erik.html">testpagina 1 erik</a></div>
+    <div class="linkjes">      
+        <div><a href="allerecepten.html">alle recepten</a></div>
+        <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
+        <div><a href="inloggen.html">inloggen</a></div>
+        <div><a href="receptaanmaken.html">receptaanmaken</a></div>
+        <div><a href="erik.html">testpagina 1 erik</a></div>
+    </div>
     
         `;
     document.getElementById("footerbalk").innerHTML = `
+    <div id="footerbalk"></div>
         <footer class="fixed-bottom container-fluid">
             <div class="row">
                 <div class=" col-12">Bedankt voor het bezoeken van onze website! Fijne dag!</div>
@@ -51,7 +53,7 @@ function maakmenubalk() {
 
 //<div><a href="index.html">home</a></div>  style="text-align: center;"
 
-// functie voor het uploaden van afbeeldingen
+// functie voor het uploaden van afbeeldingen<div id="menubalk" class="fixed-top">
 
 function uploadFile() {
     // Define the elements
