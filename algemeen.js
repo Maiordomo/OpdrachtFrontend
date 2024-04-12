@@ -125,6 +125,7 @@ function receptnaamtoevoegen() {
     console.log("naaminvoer");
     let naam = document.getElementById("naaminvoer").value;
     console.log(naam);
+    document.getElementById("omschrijving").innerHTML = "Omschrijving van recept: " + naam ;
     
 
     
