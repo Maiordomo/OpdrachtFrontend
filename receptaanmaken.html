@@ -46,7 +46,7 @@
     <button class="button-52" onclick="receptnaamtoevoegen()">Recept template creëren</button>
 
     
-    <h3> Omscrhijving</h3>
+    <h3 id="omschrijving"></h3>
     <input id="Omschirjving" type="text" placeholder="Omschrijving van het recept... (max 200 woorden)"
         style="height:25px; width:350px;" />
     <br>
@@ -54,14 +54,14 @@
     <br>
     <br>
     <div>
-        <textarea id="ingredienteninvoer" placeholder="Voeg hier je ingredienten toe..." style="height:300px; width:350px;resize:none;"></textarea>
+        <textarea id="ingredienteninvoer" placeholder="Voeg hier je ingredienten als een lijst toe (ingredient1,ingredient2,ingredient3)..." style="height:300px; width:350px;resize:none;"></textarea>
         
     </div>
     <button class="button-52" onclick="">Ingrëdienten toeveogen</button>
 
     <div class="container2">
         <h3 id="staptext"></h3>
-        <input type="text" id="stapinvoer" placeholder="Omschrijving van de stap..." style="height:100px; width:700px;" />
+        <textarea id="stapinvoer" placeholder="Omschrijving van de stap..." style="height:100px; width:700px;resize:none;"></textarea>
         <br>
         <br>
         <button class="button-52" onclick="staptoevoegen()">Voeg stap toe </button>
