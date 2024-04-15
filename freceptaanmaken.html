@@ -44,7 +44,7 @@
                 },
                 body: stapjson
             }).then( r => r.text())
-            .then(d => console.log(d))
+            .then(d => toonreceptinhoud())
         }
         function toonreceptinhoud(){
             console.log("toon receptinhoud");
@@ -53,9 +53,32 @@
             .then(r => r.json())
             .then(d => verwerkafbeelding(d))
         }
-
+    let stappen = []
     function verwerkafbeelding(heelrecept){
+        console.log(heelrecept)
         document.getElementById("receptnaampreview").innerHTML = heelrecept[0].naam;
+        for(let x = 0; x < heelrecept.length; x++){
+            if(heelrecept[0].Stapbeschrijving == null || findstap(heelrecept[x].Stapbeschrijving)){
+                console.log("null");
+            }else{
+                stappen.push([heelrecept[x].Stapbeschrijving, heelrecept[x].volgorde])
+            }
+        }
+        toonstappen();
+    }
+    function findstap(destring){
+        for(let y = 0; y< stappen.length; y++){
+            if(destring == stappen[y][0]){
+                return true;
+            }
+        }
+        return false;
+    }
+    function toonstappen(){
+        document.getElementById("stappenlijst").innerHTML = "";
+        for(let x = 0; x < stappen.length; x++){
+            document.getElementById("stappenlijst").innerHTML += "<br>"+stappen[x][1] +" - "+stappen[x][0]
+        }
     }
     </script>
 </head>
@@ -72,6 +95,9 @@
             Recept Preview:
             <div>
                 <div id="receptnaampreview">
+
+                </div>
+                <div id="stappenlijst">
 
                 </div>
             </div>
