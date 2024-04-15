@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="algemeen.js"></script>
+    <script>
+        function aanmakenrecept(){
+            let naamrecept = document.getElementById("naamreceptinvoer").value;
+            console.log(naamrecept)
+            let recept = {};
+            recept.naam = naamrecept;
+            let receptjson = JSON.stringify(recept);
+            fetch(backendurl + "recepttevoegen2temp", {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: receptjson
+            }).then( r => r.text())
+            .then(d => plaatsreceptid(d))
+        }
+        function plaatsreceptid(id){
+            document.getElementById("receptidinput").value = id;
+            document.getElementById("vervolgstappendiv").hidden = false;
+            toonreceptinhoud();
+        }
+        function staptoevoegen(){
+            console.log("stap toevoegen");
+        }
+
+        function ingredienttoevoegen() {
+            console.log("ingredient toevoegen");
+            let receptid = document.getElementById("receptidinput").value;
+            let ingredient = {};
+            ingredient.naam = document.getElementById("ingredientomschrijvinginput").value;
+            ingredient.volgorde = document.getElementById("ingredientomschrijving").value;
+            let ingredientjson = JSON.stringify(ingredient);
+            console.log(ingredientjson);
+
+
+
+            fetch(backendurl + "ingredienttoevoegenaanrecept/"+receptid, {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: ingredientjson
+            }).then( r => r.text())
+            .then(d => toonreceptinhoud())
+        }
+
+
+        function toonreceptinhoud(){
+            console.log("toon receptinhoud");
+            var iddiejeuitguihaalt = document.getElementById("receptidinput").value;
+        fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
+        .then(r => r.json())
+        .then(d => verwerkafbeelding(d))
+        }
+
+    function verwerkafbeelding(heelrecept){
+        document.getElementById("receptnaampreview").innerHTML = heelrecept[0].naam;
+    }
+
+    let ingredienten = []
+    function verwerkafbeelding(heelrecept){
+        console.log(heelrecept)
+        document.getElementById("receptnaampreview").innerHTML = heelrecept[0].inaam;
+        for(let x = 0; x < heelrecept.length; x++){
+            if(heelrecept[0].inaam == null || findingredient(heelrecept[x].inaam)){
+                console.log("null");
+            }else{
+                ingredienten.push([heelrecept[x].inaam, heelrecept[x].ivolgorde])
+            }
+        }
+        tooningredienten();
+    }
+    function findingredient(destring){
+        for(let y = 0; y< ingredienten.length; y++){
+            if(destring == ingredienten[y][0]){
+                return true;
+            }
+        }
+        return false;
+    }
+    function tooningredienten(){
+        console.log(ingredienten)
+        document.getElementById("ingredientenlijst").innerHTML = "";
+        for(let x = 0; x < ingredienten.length; x++){
+            document.getElementById("ingredientenlijst").innerHTML += "<br>"+ingredienten[x][1] +" - "+ingredienten[x][0]
+        }
+    }
+    </script>
+</head>
+<body>
+    naam recept:<input id="naamreceptinvoer"><br>
+    <button onclick="aanmakenrecept()">maak recept aan</button>  
+    <div id="vervolgstappendiv" hidden>
+        idrecept : <input id="receptidinput">
+        ingredient toevoegen: <br>
+        <textarea id="ingredientomschrijvinginput"></textarea><br>
+        <input id="ingredientomschrijving">
+        <button onclick="ingredienttoevoegen()">voeg ingredient toe</button>
+        <div>
+            Recept Preview:
+            <div>
+                <div id="receptnaampreview">
+
+                </div>
+                <div id="ingredientenlijst">
+
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
