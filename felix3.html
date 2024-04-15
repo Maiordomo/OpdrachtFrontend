@@ -39,6 +39,17 @@ const statusLabel = document.getElementById('statusLabel'); // The ID of an elem
     }
 
 </script>
+<style>
+    :root{
+        --main-bg-color: yellow;
+    }
+    .dezemoetkleurkrijgen{
+        background-color:var(--main-bg-color);
+    }
 
+</style>
 <input type="file" id="fileInput" />
 <button onclick="uploadFile()">Upload Afbeelding</button>
+<div class="dezemoetkleurkrijgen">
+    Dynamische kleur
+</div>

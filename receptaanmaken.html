@@ -11,31 +11,71 @@
             maakmenubalk();
         }
     </script>
-    
-    
+
+
+    <script>
+
+        let counter = 1
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let element = document.getElementById("myBtn");
+            element.addEventListener("click", function () {
+                counter++;
+                console.log(counter);
+                document.getElementById("staptext").innerHTML = "Voeg stap " + counter + " toe: ";
+                if (document.getElementById("stapinvoer").value != "")
+                    document.getElementById("stapinvoer").value = "";
+                if (document.getElementById('fileInput').value != "")
+                    document.getElementById('fileInput').value = "";
+            });
+        });
+
+    </script>
+
+
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
     <div id="menubalk"></div>
     <h1>Recept aanmaken</h1>
+    <br>
+    <input id="naaminvoer" type="text" placeholder="Naam van het recept opslaan..."
+        style="height:25px; width:350px;" />
+    <br>
+    <button class="button-52" onclick="receptnaamtoevoegen()">Recept template creëren</button>
+
     
-
-
+    <h3 id="omschrijving"></h3>
+    <input id="Omschirjving" type="text" placeholder="Omschrijving van het recept... (max 200 woorden)"
+        style="height:25px; width:350px;" />
+    <br>
+    <button class="button-52" onclick="">Tags toeveogen</button>
+    <br>
+    <br>
     <div>
-        <h3>Beschrijving Stap 1: </h3>
-        <input type="text" id="stapinvoer" style="height:100px; width:700px;"/>
+        <textarea id="ingredienteninvoer" placeholder="Voeg hier je ingredienten als een lijst toe (ingredient1,ingredient2,ingredient3)..." style="height:300px; width:350px;resize:none;"></textarea>
+        
+    </div>
+    <button class="button-52" onclick="">Ingrëdienten toeveogen</button>
+
+    <div class="container2">
+        <h3 id="staptext"></h3>
+        <textarea id="stapinvoer" placeholder="Omschrijving van de stap..." style="height:100px; width:700px;resize:none;"></textarea>
         <br>
-        <button onclick="staptoevoegen()">Voeg stap toe x</button>
+        <br>
+        <button class="button-52" onclick="staptoevoegen()">Voeg stap toe </button>
         <br>
         <br>
-        <input type="file" id="fileInput"/>
+        <input type="file" id="fileInput" />
         <button onclick="uploadFile()">Upload Afbeelding</button>
         <br>
-        <button class="button-aanmaken" role="button">text</button>
+        <br>
+        <button id="myBtn">[+] Naar de volgende stap</button>
     </div>
-    <br>
-    <div id="footerbalk"></div>
+  
+
 </body>
+<div id="footerbalk"></div>
 
 </html>

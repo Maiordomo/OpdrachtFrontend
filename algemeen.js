@@ -106,7 +106,38 @@ function staptoevoegen() {
     console.log("stapinleveren");
     let stap = document.getElementById("stapinvoer").value;
     console.log(stap);
+
     
-    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"})
+    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"}).then(response => {
+        if (response.ok) {
+            alert("Stap succesvol geüpload!");
+        } else {
+            alert("Upload mislukt. Statuscode: " + response.status);
+        }
+    })
+        .catch(error => {
+            console.error("Fout tijdens het uploaden:", error);
+        });     
+    //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
+}
+
+function receptnaamtoevoegen() {
+    console.log("naaminvoer");
+    let naam = document.getElementById("naaminvoer").value;
+    console.log(naam);
+    document.getElementById("omschrijving").innerHTML = "Omschrijving van recept: " + naam ;
+    
+
+    
+    fetch("http://127.0.0.1:5000/receptaanmaken/"+naam,{mode:"cors"}).then(response => {
+        if (response.ok) {
+            alert("Recept Template succesvol gecreëerd!");
+        } else {
+            alert("Template mislukt. Statuscode: " + response.status);
+        }
+    })
+        .catch(error => {
+            console.error("Fout tijdens het creëren:", error);
+        });     
     //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
 }
