@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="algemeen.js"></script>
+    <script>
+        function aanmakenrecept(){
+            let naamrecept = document.getElementById("naamreceptinvoer").value;
+            console.log(naamrecept)
+            let recept = {};
+            recept.naam = naamrecept;
+            let receptjson = JSON.stringify(recept);
+            fetch(backendurl + "recepttevoegen2temp", {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: receptjson
+            }).then( r => r.text())
+            .then(d => plaatsreceptid(d))
+        }
+        function plaatsreceptid(id){
+            document.getElementById("receptidinput").value = id;
+            document.getElementById("vervolgstappendiv").hidden = false;
+            toonreceptinhoud();
+        }
+        function staptoevoegen(){
+            console.log("stap toevoegen");
+        }
+        function toonreceptinhoud(){
+            console.log("toon receptinhoud");
+            var iddiejeuitguihaalt = document.getElementById("receptidinput").value;
+        fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
+        .then(r => r.json())
+        .then(d => verwerkafbeelding(d))
+        }
+
+    function verwerkafbeelding(heelrecept){
+        document.getElementById("receptnaampreview").innerHTML = heelrecept[0].naam;
+    }
+    </script>
+</head>
+<body>
+    naam recept:<input id="naamreceptinvoer"><br>
+    <button onclick="aanmakenrecept()">maak recept aan</button>  
+    <div id="vervolgstappendiv" hidden>
+        idrecept : <input id="receptidinput">
+        stap toevoegen
+        <button onclick="staptoevoegen()">voeg stap toe</button>
+        <div>
+            Recept Preview:
+            <div>
+                <div id="receptnaampreview">
+
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
