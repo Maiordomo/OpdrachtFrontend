@@ -1,36 +1,120 @@
+body{
+  background-color:var(--kleur-vier);
+}
 nav{
-  background-color: #c5dacf;
+  background-color:var(--kleur-drie);
   text-align: center;
 }
+
 .carousel-container {
   display: flex;
   justify-content: center; /* Align container horizontally */
   align-items: center; /* Align container vertically */
   width: 100%; /* Make the image fill the carousel container */
-  height: auto; /* Maintain aspect ratio */
-
-    
+  height: auto; /* Maintain aspect ratio */   
+  margin-bottom: 50px;
 }
+p{
+  margin-left: 100px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
+}
+h2{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .search-form {
   margin-top: 10px; /* Add some top margin to create space between the button and the search form */
 }
+:root{
+  --kleur-een:#F2CD5E;
+}
+:root{
+  --kleur-twee:#F2B84B;
+}
+:root{
+  --kleur-drie:#D9eE32;
+}
+:root{
+  --kleur-vier:#F1F4E3;
+}
+:root{
+  --kleur-vijf:#0D0D0D;
+}
+.btn{
+  background-color:var(--kleur-vijf);
+  color:var(--kleur-twee);;
+}
+/* css van Erik's grid op  zowel de index.html als mijn fav recepten */
+
+        .specialheader {
+            text-align: center;
+            margin: 100px;
+        }
+        .col-1 {
+            padding-right: 115px;
+            padding-left: 115px;
+            margin-bottom: 30px;
+        }
+        .colb{
+          margin-bottom: 20px;
+        }
+
+        .imgresize {
+            width: 200px;
+            height: 133px;
+        }
+        .imgresizegerechtvandeweek {
+          width: 400px;
+          height: 266px;
+      }
+
+        .imgresize:hover {
+            box-shadow: 0 0 4px 2px #5c5959;
+            filter: drop-shadow(#5c5959 1em 1em 10px);
+            cursor: pointer;
+        }
+
+        .b {
+            margin-left: 150px;
+        }
+
+        .c {
+            text-align: right;
+            margin-left: 850px;
+        }
+
+        .d {
+            margin: 50px;
+        }
+
+        .sterren {
+            margin: 50px;
+        }
+
+        .specialheader {
+          text-align: center;
+          margin: 100px;
+      }
+
 
 
 .carousel-inner{
   height: 300px;
   margin-top: 130px;
 }
+
 h1 {
-    background-color: #80ced6;
+  background-color:var(--kleur-drie);
   }
 
  header{
-    background-color: rgb(36, 172, 59);
+  background-color:var(--kleur-twee);
     height: 130px;
    
   }
@@ -39,7 +123,7 @@ h1 {
     top: 130px;
     position: absolute;
     right: 30px;
-    background-color: #eedd1b;
+    background-color:var(--kleur-drie);
     padding: 20px;
     border-radius: 12px;
     z-index: 1000;
@@ -50,7 +134,7 @@ h1 {
     font-size: 0.7rem;  
   }
   footer{
-    background-color: #a5119e;
+    background-color:var(--kleur-een);
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -64,13 +148,8 @@ h1 {
   
   }
 
-
-
-
-
-
 .button-aanmaken {
-  background-color: #eedd1b;
+  background-color:var(--kleur-drie);
   border-radius: 100px;
   box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
   color: rgb(16, 15, 15);
@@ -123,7 +202,7 @@ h1 {
 
 .button-52:after {
   content: "";
-  background-color: #ffe54c;
+  background-color:var(--kleur-drie);
   width: 100%;
   z-index: -1;
   position: absolute;
@@ -142,4 +221,8 @@ h1 {
   .button-52 {
     padding: 13px 50px 13px;
   }
+}
+.gerechtvandeweek{
+  text-align: center;
+  
 }
