@@ -39,7 +39,7 @@ const statusLabel = document.getElementById('statusLabel'); // The ID of an elem
 
     }
     function toonafbeeldingvanrecept(){
-        var iddiejeuitguihaalt = 36;
+        var iddiejeuitguihaalt = document.getElementById("gerechtnummer").value;
         fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
         .then(r => r.json())
         .then(d => verwerkafbeelding(d))
@@ -62,5 +62,7 @@ const statusLabel = document.getElementById('statusLabel'); // The ID of an elem
 <div class="dezemoetkleurkrijgen">
     Dynamische kleur
 </div>
+<br><br>
+<input id="gerechtnummer" value="36">
 <button onclick="toonafbeeldingvanrecept()">Toon Afbeelding</button>
 <img src="niks.jpg" id="afbeeldingrecept">
