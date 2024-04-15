@@ -30,13 +30,28 @@
         }
         function staptoevoegen(){
             console.log("stap toevoegen");
+            let receptid = document.getElementById("receptidinput").value;
+            let stap = {};
+            stap.Stapbeschrijving = document.getElementById("stapomschrijvinginput").value;
+            stap.volgorde = document.getElementById("stapvolgordeinput").value;
+            let stapjson = JSON.stringify(stap);
+            console.log(stapjson);
+            // fetch(backendurl + "recepttevoegen2temp", {
+            //     method: 'POST', // Specify the method
+            //     headers: {
+            //         'Content-Type': 'application/json', // Specify the content type
+            //         // Add other headers if required
+            //     },
+            //     body: stapjson
+            // }).then( r => r.text())
+            // .then(d => plaatsreceptid(d))
         }
         function toonreceptinhoud(){
             console.log("toon receptinhoud");
             var iddiejeuitguihaalt = document.getElementById("receptidinput").value;
-        fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
-        .then(r => r.json())
-        .then(d => verwerkafbeelding(d))
+            fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
+            .then(r => r.json())
+            .then(d => verwerkafbeelding(d))
         }
 
     function verwerkafbeelding(heelrecept){
@@ -49,7 +64,9 @@
     <button onclick="aanmakenrecept()">maak recept aan</button>  
     <div id="vervolgstappendiv" hidden>
         idrecept : <input id="receptidinput">
-        stap toevoegen
+        stap toevoegen:<br>
+        <textarea id="stapomschrijvinginput"></textarea><br>
+        <input id="stapvolgordeinput">
         <button onclick="staptoevoegen()">voeg stap toe</button>
         <div>
             Recept Preview:
