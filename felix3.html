@@ -1,4 +1,6 @@
+<script src="algemeen.js"></script>
 <script>
+    const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web'; // URL to the Azure Blob Storage container
     function uploadFile() {
   // Define the elements
 const fileInput = document.getElementById('fileInput'); // The ID of your input type="file"
@@ -13,8 +15,7 @@ const statusLabel = document.getElementById('statusLabel'); // The ID of an elem
     }
 
     // Construct the full SAS URL from your Azure portal information
-    const sasToken = 'sp=racwd&st=2024-04-08T11:34:46Z&se=2024-04-08T19:34:46Z&spr=https&sv=2022-11-02&sr=c&sig=G28MSrE8n0GI6RWbUZ3jI3lFiX64PVoECIIys5hUths%3D'; // Your SAS token without the leading "?"
-    const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web'; // URL to the Azure Blob Storage container
+    const sasToken = 'sp=rawd&st=2024-04-15T07:33:03Z&se=2024-05-31T15:33:03Z&sip=0.0.0.0-255.255.255.255&sv=2022-11-02&sr=c&sig=zkUX3UQya0Gd%2BM%2BGdAVtLrELBKWgOiHXGaHVTLvSfiQ%3D'; // Your SAS token without the leading "?"
     const blobName = file.name; // Use the file's name as the blob name or set your own
     const fullUrl = `${blobServiceUrl}/${blobName}?${sasToken}`;
 
@@ -37,7 +38,15 @@ const statusLabel = document.getElementById('statusLabel'); // The ID of an elem
         });
 
     }
-
+    function toonafbeeldingvanrecept(){
+        var iddiejeuitguihaalt = document.getElementById("gerechtnummer").value;
+        fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
+        .then(r => r.json())
+        .then(d => verwerkafbeelding(d))
+    }
+    function verwerkafbeelding(heelrecept){
+        document.getElementById("afbeeldingrecept").src = blobServiceUrl+'/'+heelrecept[0].afbeelding;
+    }
 </script>
 <style>
     :root{
@@ -53,3 +62,7 @@ const statusLabel = document.getElementById('statusLabel'); // The ID of an elem
 <div class="dezemoetkleurkrijgen">
     Dynamische kleur
 </div>
+<br><br>
+<input id="gerechtnummer" value="36">
+<button onclick="toonafbeeldingvanrecept()">Toon Afbeelding</button>
+<img src="niks.jpg" id="afbeeldingrecept">

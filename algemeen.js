@@ -77,7 +77,7 @@ function uploadFile() {
     }
 
     // Construct the full SAS URL from your Azure portal information
-    const sasToken = 'sp=racwd&st=2024-04-08T11:34:46Z&se=2024-04-08T19:34:46Z&spr=https&sv=2022-11-02&sr=c&sig=G28MSrE8n0GI6RWbUZ3jI3lFiX64PVoECIIys5hUths%3D'; // Your SAS token without the leading "?"
+    const sasToken = 'sp=rawd&st=2024-04-15T07:33:03Z&se=2024-05-31T15:33:03Z&sip=0.0.0.0-255.255.255.255&sv=2022-11-02&sr=c&sig=zkUX3UQya0Gd%2BM%2BGdAVtLrELBKWgOiHXGaHVTLvSfiQ%3D'; // Your SAS token without the leading "?"
     const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web'; // URL to the Azure Blob Storage container
     const blobName = file.name; // Use the file's name as the blob name or set your own
     const fullUrl = `${blobServiceUrl}/${blobName}?${sasToken}`;
