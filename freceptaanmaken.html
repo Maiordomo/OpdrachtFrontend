@@ -36,15 +36,15 @@
             stap.volgorde = document.getElementById("stapvolgordeinput").value;
             let stapjson = JSON.stringify(stap);
             console.log(stapjson);
-            // fetch(backendurl + "recepttevoegen2temp", {
-            //     method: 'POST', // Specify the method
-            //     headers: {
-            //         'Content-Type': 'application/json', // Specify the content type
-            //         // Add other headers if required
-            //     },
-            //     body: stapjson
-            // }).then( r => r.text())
-            // .then(d => plaatsreceptid(d))
+            fetch(backendurl + "staptoevoegenaanrecept/"+receptid, {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: stapjson
+            }).then( r => r.text())
+            .then(d => console.log(d))
         }
         function toonreceptinhoud(){
             console.log("toon receptinhoud");
