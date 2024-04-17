@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="algemeen.js"></script>
+    <script>
+        window.onload = function(){
+            maakmenubalk();
+        }
+    </script>
+
+    <script>
+function metdejson(){
+    fetch(backendurl + "/felixjson")
+    .then(r => r.json())
+    .then(d => verwerkdejson(d))
+}
+function verwerkdejson(allerecepten){
+    for(let x = 0; x < allerecepten.length; x++){
+        document.getElementById("dereceptendiv2").innerHTML += `
+            <h1>Recept ${x+1}: ${allerecepten[x].naam} - ${allerecepten[x].aantalsterren}</h1>
+            <a href="recept.html?gid=${allerecepten[x].id}" >Klik voor details</a>        `
+        
+    }
+}  
+</script>
+
+</head>
+
+<body>
+    <div id="menubalk"></div>
+    <h1>allerecepten</h1>
+
+    <button onclick="metdejson()">met de json</button>
+<div id="dereceptendiv2">Hier komen onze recepten</div>
