@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <title>Recept aanmaken</title>
     <link rel="stylesheet" href="main.css">
     <script src="algemeen.js"></script>
@@ -12,10 +17,44 @@
             maakmenubalk();
         }
     </script>
+    <style>
+        .div-standard {
+            margin-left: 5%;
+
+        }
+
+        .grid-container-element {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            border: 1px solid black;
+            width: 50%;
+            margin-left: 5%;
+        }
+
+        .grid-child-element1 {
+            margin-left: 10%;
+            
+        }
+
+        .grid-child-element2 {
+            margin-left: 10%;
+            
+        }
+
+        .recept-header {
+            display: flex;
+            justify-content: center;
+            font-size: xx-large;
+            font-weight: bold;
+            padding-top: 1%;
+            text-transform: capitalize;
+        }
+    </style>
 
 
     <script>
-    function aanmakenrecept() {
+        function aanmakenrecept() {
             let naamrecept = document.getElementById("naamreceptinvoer").value;
             console.log(naamrecept)
             let recept = {};
@@ -34,9 +73,12 @@
         function plaatsreceptid(id) {
             document.getElementById("receptidinput").value = id;
             document.getElementById("vervolgstappendiv").hidden = false;
+            document.getElementById("hiddenatstart").hidden = false;
+            document.getElementById("alsohiddenatstart").hidden = false;
+            document.getElementById("alsohiddenatstart").innerHTML = document.getElementById("naamreceptinvoer").value;
             toonreceptinhoud();
         }
-        function staptoevoegen(){
+        function staptoevoegen() {
             console.log("stap toevoegen");
             let receptid = document.getElementById("receptidinput").value;
             let stap = {};
@@ -44,15 +86,15 @@
             stap.volgorde = document.getElementById("stapvolgordeinput").value;
             let stapjson = JSON.stringify(stap);
             console.log(stapjson);
-            fetch(backendurl + "staptoevoegenaanrecept/"+receptid, {
+            fetch(backendurl + "staptoevoegenaanrecept/" + receptid, {
                 method: 'POST', // Specify the method
                 headers: {
                     'Content-Type': 'application/json', // Specify the content type
                     // Add other headers if required
                 },
                 body: stapjson
-            }).then( r => r.text())
-            .then(d => toonreceptinhoud())
+            }).then(r => r.text())
+                .then(d => toonreceptinhoud())
         }
 
         function ingredienttoevoegen() {
@@ -113,7 +155,7 @@
         let ingredienten = []
         function verwerkafbeelding2(heelrecept2) {
             console.log(heelrecept2)
-            document.getElementById("ingredientenpreview").innerHTML = "Ingredienten voor: " + document.getElementById("naamreceptinvoer").value;
+            document.getElementById("ingredientenpreview").innerHTML = "Ingredienten voor recept " + document.getElementById("naamreceptinvoer").value + ":";
             for (let x = 0; x < heelrecept2.length; x++) {
                 if (heelrecept2[0].inaam == null || findingredient(heelrecept2[x].inaam)) {
                     console.log("null");
@@ -135,7 +177,7 @@
         let stappen = []
         function verwerkafbeelding(heelrecept) {
             console.log(heelrecept)
-            document.getElementById("receptnaampreview").innerHTML = "Stappen voor de bereiding van: " + document.getElementById("naamreceptinvoer").value;
+            document.getElementById("receptnaampreview").innerHTML = "Stappen voor de bereiding van " + document.getElementById("naamreceptinvoer").value + ":";
             for (let x = 0; x < heelrecept.length; x++) {
                 if (heelrecept[0].Stapbeschrijving == null || findstap(heelrecept[x].Stapbeschrijving)) {
                     console.log("null");
@@ -157,48 +199,57 @@
         function tooningredienten() {
             console.log(ingredienten)
             document.getElementById("ingredientenlijst").innerHTML = "";
-            document.getElementById("previewtext").innerHTML = "Preview for recept: " + document.getElementById("naamreceptinvoer").value;
+            document.getElementById("previewtext").innerHTML = "Preview voor recept " + document.getElementById("naamreceptinvoer").value;
             for (let x = 0; x < ingredienten.length; x++) {
                 document.getElementById("ingredientenlijst").innerHTML += "<br>" + ingredienten[x][1] + " - " + ingredienten[x][0] + " " + ingredienten[x][2]
             }
         }
 
-        function toonstappen(){
-        document.getElementById("stappenlijst").innerHTML = "";
-        for(let x = 0; x < stappen.length; x++){
-            document.getElementById("stappenlijst").innerHTML += "<br>"+stappen[x][1] +" - "+stappen[x][0]
+        function toonstappen() {
+            document.getElementById("stappenlijst").innerHTML = "";
+            for (let x = 0; x < stappen.length; x++) {
+                document.getElementById("stappenlijst").innerHTML += "<br>" + stappen[x][1] + " - " + stappen[x][0]
+            }
         }
-    }
     </script>
 </head>
 
 <body>
     <div id="menubalk"></div>
-    <h1>Recept aanmaken</h1>
+    <br><br><br><br><br>
+    <div class="recept-header" id="alsohiddenatstart" hidden></div>
     <br>
-    naam recept:<input id="naamreceptinvoer"><br>
-    <button onclick="aanmakenrecept()">maak recept aan</button>
-    <div id="vervolgstappendiv" hidden>
-        idrecept : <input id="receptidinput"><br>
-        Tag toevoegen: <br>
-        <textarea id="taginput"></textarea><br>
-        <button onclick="tagtoevoegen()">voeg tag toe</button><br><br>
-        Ingredient toevoegen: <br>
-        <textarea id="ingredientomschrijvinginput"></textarea><br>
-        Volgorde van ingredient: <br>
-        <input id="ingredientomschrijving"><br>
-        Hoeveelheid van ingredient: <br>
-        <input id="ingredienthoeveelheid"><br>
-        <button onclick="ingredienttoevoegen()">voeg ingredient toe</button><br><br>
-        Stap omschrijving toevoegen:<br>
-        <textarea id="stapomschrijvinginput"></textarea><br>
-        Stap volgorde:<br>
-        <input id="stapvolgordeinput"><br>
-        <button onclick="staptoevoegen()">voeg stap toe</button><br><br>
-        Upload een afbeelding voor deze stap:<br>
-        <input type="file" id="fileInput" />
-        <button onclick="uploadFile()">Upload Afbeelding</button>
-        <div>
+    <div class="div-standard">
+        Naam recept: <br>
+        <input id="naamreceptinvoer"><br>
+        <button onclick="aanmakenrecept()">Maak recept aan</button>
+    </div>
+    <br>
+    <div class="grid-container-element">
+        <div class="grid-child-element1" id="vervolgstappendiv" hidden>
+            idrecept : <br>
+            <input id="receptidinput"><br>
+            Tag toevoegen: <br>
+            <textarea id="taginput"></textarea><br>
+            <button onclick="tagtoevoegen()">Voeg tag toe</button><br><br>
+            Ingredient toevoegen: <br>
+            <textarea id="ingredientomschrijvinginput"></textarea><br>
+            Volgorde van ingredient: <br>
+            <input id="ingredientomschrijving"><br>
+            Hoeveelheid van ingredient: <br>
+            <input id="ingredienthoeveelheid"><br>
+            <button onclick="ingredienttoevoegen()">Voeg ingredient toe</button><br><br>
+            Stap omschrijving toevoegen:<br>
+            <textarea id="stapomschrijvinginput"></textarea><br>
+            Stap volgorde:<br>
+            <input id="stapvolgordeinput"><br>
+            <button onclick="staptoevoegen()">Voeg stap toe</button><br><br>
+            Upload een afbeelding voor deze stap:<br>
+            <input type="file" id="fileInput" /><br>
+            <button onclick="uploadFile()">Upload Afbeelding</button>
+
+        </div>
+        <div class="grid-child-element2" id="hiddenatstart" hidden>
             <h3 id="previewtext"></h3>
             <div>
                 <div id="ingredientenpreview">
