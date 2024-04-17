@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alle recepten</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    
     <script src="algemeen.js"></script>
     <script>
         window.onload = function(){
@@ -21,7 +25,7 @@ function verwerkdejson(allerecepten){
     for(let x = 0; x < allerecepten.length; x++){
         document.getElementById("dereceptendiv2").innerHTML += `
             <h1>Recept ${x+1}: ${allerecepten[x].naam} - ${allerecepten[x].aantalsterren}</h1>
-            <a href="recept.html?gid=${allerecepten[x].id}" >Klik voor details</a>        `
+            <a href="recept.html?gid=${allerecepten[x].id}" target="blank">Klik voor details</a>        `
         
     }
 }  
@@ -30,14 +34,161 @@ function verwerkdejson(allerecepten){
 </head>
 
 <body>
+    
+    <header>
     <div id="menubalk"></div>
-    <h1>allerecepten</h1>
+    </header>
+   
+    <main>
 
-    <button onclick="metdejson()">met de json</button>
-<div id="dereceptendiv2">Hier komen onze recepten</div>
+    <h1>allerecepten</h1>
+    <div class="container">
+        <button onclick="metdejson()">met de json</button>
+    <div id="dereceptendiv2">Hier komen onze recepten</div>
+    </div>
 
 <hr>
+<hr>
+<br>
+<br>    
 
+<div class="container text-center">
+    <div class="row justify-content-begin">
+        <div class="col-6">
+    <h3>Nieuwste gerechten</h3>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+        
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+        
+    </div>
+    <br>
+    <br>
+
+
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+
+        
+
+    </div>
+    <br>
+
+    <h2>In de spotlight</h2>
+    <div class="gerechtvandeweek">
+        <img class="imgresizegerechtvandeweek" src="./testimages/burger200.png">
+        <br>
+        <a class="d" href="">Recept&nbsp;Naam</a>
+        <br>
+        <a class="sterren" href="">5&nbsp;Sterren</a>
+    </div>
+    
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+        <div class="col-3">
+            <img class="imgresize" src="./testimages/burger200.png">
+            <br>
+            <a class="d" href="">Recept&nbsp;Naam</a>
+            <br>
+            <a class="sterren" href="">5&nbsp;Sterren</a>
+        </div>
+    
+      
+
+    </div>
+    <br>
+    <br>
+
+    <div class="row justify-content-center">
+    <div class="col-3 justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+</div>
+
+    </main>
+    <footer id="footerbalk">
+
+    </footer>
 
 </body>
 </html>
