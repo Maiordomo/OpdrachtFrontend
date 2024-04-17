@@ -142,10 +142,18 @@
 				fill:rgb(151, 71, 6)
 			}
 
-			.fotodiv img{
-				object-fit: fill;
+			#fotodiv{
+				width: 100%;
+				height: 600px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 			
+			#fotogerecht{
+				width: 65%;
+				height: 100%;
+			}
 
 		</style>	
 			
@@ -163,7 +171,7 @@
 			<div class="container">
 				<div class="row">
 					<span class="border border-3">
-						<div class="d-flex align-items-center justify-content-center" id="fotodiv">
+						<div class="col-12" id="fotodiv">
 							<img scr = 'niks.jpg' id="fotogerecht">
 						</div>
 					</span>
@@ -238,8 +246,9 @@
 				</div>
 
 				<div id="gepostereview">
-					<span class-border
+					<span class="border border-3">
 					Hier komen de geposte reviews
+					</span>
 				</div>
 			
 			</div>
