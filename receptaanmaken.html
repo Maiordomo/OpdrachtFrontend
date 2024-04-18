@@ -58,14 +58,12 @@
         function aanmakenrecept() {
             let naamrecept = document.getElementById("naamreceptinvoer").value;
             let descriptionrecept = document.getElementById("descriptionreceptinvoer").value;
-            let sterrenrecept = document.getElementById("sterreninvoer").value;
             let difficultyrecept = document.getElementById("difficultyinvoer").value;
             console.log(naamrecept)
             console.log(descriptionrecept)
             let recept = {};
             recept.naam = naamrecept;
             recept.description = descriptionrecept;
-            recept.graad = sterrenrecept;
             recept.difficulty = difficultyrecept;
             let receptjson = JSON.stringify(recept);
             fetch(backendurl + "recepttevoegen2temp", {
@@ -228,10 +226,8 @@
     <div class="recept-header" id="alsohiddenatstart" hidden></div>
     <br>
     <div class="div-standard">
-        Naam recept:&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&ensp;&ensp; Beschrijving:<br>
-        <input id="naamreceptinvoer">&ensp;<input id="descriptionreceptinvoer"><br>
-        Sterren:&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Bereidingstijd:<br>
-        <input id="sterreninvoer">&ensp;<input id="difficultyinvoer"><br>
+        Naam recept:&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&ensp;&ensp; Beschrijving:&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&ensp;&ensp;&ensp;Bereidingstijd:<br>
+        <input id="naamreceptinvoer">&ensp;<input id="descriptionreceptinvoer">&ensp;<input id="difficultyinvoer"><br>
         <button onclick="aanmakenrecept()">Maak recept aan</button>
     </div>
     <br>
