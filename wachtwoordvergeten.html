@@ -13,14 +13,35 @@
     <script>
         window.onload = function () {
             maakmenubalk();
-            setBackendUrls();
         }
 
-        function setBackendUrls() {
-            let form = document.getElementById("resetPasswordForm");
-            if (form) {
-                form.action = `${backendurl}/email`;
+        function checkEmail() {
+            const email = document.getElementById("emailadres").value;
+
+            if (!email || !email.includes("@")) {
+                alert("Vul een geldig e-mailadres in.");
+                return;
             }
+
+            fetch(`${backendurl}/checkemail`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        alert("Email verzonden!");
+                    } else {
+                        alert("Email niet gevonden!");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Er is een fout opgetreden. Probeer het later opnieuw.");
+                });
         }
 
     </script>
@@ -29,6 +50,12 @@
 
 <body>
     <div id="menubalk"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <div class="container-sm">
@@ -47,20 +74,17 @@
                 </figure>
                 <br>
                 <br>
-                <!-- <form action="http://127.0.0.1:5000/email" method="POST"> -->
-                <form id="resetPasswordForm" method="POST">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Emailadres</label>
-                        <input type="email" class="form-control" id="emailadres" name="emailadres">
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <input class="btn btn-warning" type="submit" value="Versturen">
-                    </div>
-                </form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Emailadres</label>
+                    <input type="email" class="form-control" id="emailadres" name="emailadres">
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-warning" onclick="checkEmail()">Versturen</button>
+                </div>
             </div>
         </div>
         <br>

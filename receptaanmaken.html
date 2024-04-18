@@ -28,7 +28,7 @@
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
             border: 1px solid black;
-            width: 50%;
+            width: 55%;
             margin-left: 5%;
         }
 
@@ -39,13 +39,14 @@
 
         .grid-child-element2 {
             margin-left: 10%;
+            margin-right: 10%;
             
         }
 
         .recept-header {
             display: flex;
             justify-content: center;
-            font-size: xx-large;
+            font-size: 5em;
             font-weight: bold;
             padding-top: 1%;
             text-transform: capitalize;
@@ -56,9 +57,16 @@
     <script>
         function aanmakenrecept() {
             let naamrecept = document.getElementById("naamreceptinvoer").value;
+            let descriptionrecept = document.getElementById("descriptionreceptinvoer").value;
+            let sterrenrecept = document.getElementById("sterreninvoer").value;
+            let difficultyrecept = document.getElementById("difficultyinvoer").value;
             console.log(naamrecept)
+            console.log(descriptionrecept)
             let recept = {};
             recept.naam = naamrecept;
+            recept.description = descriptionrecept;
+            recept.graad = sterrenrecept;
+            recept.difficulty = difficultyrecept;
             let receptjson = JSON.stringify(recept);
             fetch(backendurl + "recepttevoegen2temp", {
                 method: 'POST', // Specify the method
@@ -220,8 +228,10 @@
     <div class="recept-header" id="alsohiddenatstart" hidden></div>
     <br>
     <div class="div-standard">
-        Naam recept: <br>
-        <input id="naamreceptinvoer"><br>
+        Naam recept:&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&ensp;&ensp; Beschrijving:<br>
+        <input id="naamreceptinvoer">&ensp;<input id="descriptionreceptinvoer"><br>
+        Sterren:&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Bereidingstijd:<br>
+        <input id="sterreninvoer">&ensp;<input id="difficultyinvoer"><br>
         <button onclick="aanmakenrecept()">Maak recept aan</button>
     </div>
     <br>

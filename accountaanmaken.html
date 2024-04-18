@@ -8,26 +8,46 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="algemeen.js"></script>
     <script>
         window.onload = function () {
             maakmenubalk();
-            setBackendUrls();
-        }
-
-        function setBackendUrls() {
-            let form = document.getElementById("registrerenForm");
-            if (form) {
-                form.action = `${backendurl}/registreren`;
-            }
         }
 
         function registrerenbutton() {
-            fetch(`${backendurl}/registreren`);
-            
-        }
+            const gebruikersnaam = document.getElementById("gebruikersnaam").value;
+            const wachtwoord = document.getElementById("wachtwoord").value;
+            const emailadres = document.getElementById("emailadres").value;
+            const geboortedatum = document.getElementById("geboortedatum").value;
+            const geslacht = document.getElementById("geslacht").value;
+            const woonplaats = document.getElementById("woonplaats").value;
 
+            const userData = {
+                gebruikersnaam,
+                wachtwoord,
+                emailadres,
+                geboortedatum,
+                geslacht,
+                woonplaats
+            };
+
+            fetch(`${backendurl}/registreren`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Er is een fout opgetreden bij het aanmaken van het account.");
+                });
+        }
     </script>
     <title>Backyard Recipes - Account Aanmaken</title>
 </head>
@@ -36,24 +56,26 @@
     <div id="menubalk"></div>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container-sm">
         <div class="row">
             <div class="row-cols-sm-1">
                 <figure class="text-center">
                     <blockquote class="blockquote">
                         <p>
-                            <h2>Maak een account aan om het maximale uit Backyard
-                                Recipes te halen!</h2>
+                        <h2>Maak een account aan om het maximale uit Backyard
+                            Recipes te halen!</h2>
                         </p>
                     </blockquote>
-                    <figcaption class="blockquote-footer">
-                        Some product owner at <cite title="Source Title">YoungCapital</cite>
-                    </figcaption>
                 </figure>
                 <br>
                 <br>
                 <!-- <form action="http://127.0.0.1:5000/registreren" method="POST"> -->
-                <form id="registrerenForm" method="POST">
                     <div class="mb-3">
                         <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
                         <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
@@ -93,10 +115,9 @@
                     </div>
                     <br>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <input class="btn btn-warning" type="submit" value="Aanmaken">
-                        <!-- <button class="btn btn-warning" type="submit"onclick="registrerenbutton()">Aanmaken</button> -->
+                        <button class="btn btn-warning" type="button" onclick="registrerenbutton()">Aanmaken</button>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>
