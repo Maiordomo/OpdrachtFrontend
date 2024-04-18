@@ -8,43 +8,97 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="algemeen.js"></script>
     <script>
         window.onload = function () {
-            maakmenubalk();
             renderUserData();
-        }
-
-        function haalopbijpython() {
-            console.log("hij doet het");
-            fetch(`${backendurl}/accountpagina/`)
+            maakmenubalk();
         }
 
         function renderUserData() {
             let userData = localStorage.getItem("userData");
+            userData = JSON.parse(userData);
+            console.log(userData)
             if (userData) {
-                userData = JSON.parse(userData);
 
-
-                document.getElementById("gebruikersnaam").innerText = userData.gebruikersnaam;
-                document.getElementById("wachtwoord").innerText = userData.wachtwoord;
-                document.getElementById("emailadres").innerText = userData.emailadres;
-                document.getElementById("geboortedatum").innerText = userData.geboortedatum;
-                document.getElementById("geslacht").innerText = userData.geslacht;
-                document.getElementById("woonplaats").innerText = userData.woonplaats;
+                document.getElementById("gebruikersnaam").innerText = userData[1];
+                document.getElementById("wachtwoord").innerText = userData[2];
+                document.getElementById("emailadres").innerText = userData[3];
+                document.getElementById("geboortedatum").innerText = userData[4];
+                document.getElementById("geslacht").innerText = userData[5];
+                document.getElementById("woonplaats").innerText = userData[6];
 
             } else {
                 console.log("No user data found in localStorage");
             }
         }
 
+        function haalopbijpython() {
+            const gebruikersnaam = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")).gebruikersnaam : null;
+
+            if (!gebruikersnaam) {
+                console.error("Gebruikersnaam niet gevonden in localStorage");
+                return;
+            }
+
+            fetch(`${backendurl}/accountdata/${gebruikersnaam}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById("gebruikersnaam").innerText = data.gebruikersnaam;
+                    document.getElementById("wachtwoord").innerText = "********"; 
+                    document.getElementById("emailadres").innerText = data.emailadres;
+                    document.getElementById("geboortedatum").innerText = data.geboortedatum;
+                    document.getElementById("geslacht").innerText = data.geslacht;
+                    document.getElementById("woonplaats").innerText = data.woonplaats;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Er is een fout opgetreden bij het ophalen van de gegevens.");
+                });
+        }
+
+
+        function login() {
+            const gebruikersnaam = document.getElementById("gebruikersnaam").value;
+            const wachtwoord = document.getElementById("wachtwoord").value;
+
+            fetch('/login', {
+                method: 'POST',
+                body: JSON.stringify({ gebruikersnaam: gebruikersnaam, wachtwoord: wachtwoord }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === "ingelogd") {
+                        window.location.href = `/accountpagina/${gebruikersnaam}`; 
+                    } else {
+                        alert("Het inloggen is niet gelukt.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
     </script>
     <title>Backyard Recipes - Account Pagina</title>
 </head>
 
 <body>
     <div id="menubalk"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <div class="container-sm">
@@ -56,7 +110,7 @@
                     <br>
                     <br>
                     <br>
-                    <p><a href="accountpagina.html"
+                    <p><a href="accountpagina.html/${gebruikersnaam}"
                             class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mijn
                             gegevens</a></p>
                 </div>
