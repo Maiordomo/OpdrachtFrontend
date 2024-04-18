@@ -1,5 +1,6 @@
 // let backendurl = "https://yc2403webapp.azurewebsites.net" align-items-center
 let backendurl = "http://127.0.0.1:5000/"
+const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web';
 
 function maakmenubalk() {
     document.getElementById("menubalk").innerHTML = `
@@ -82,7 +83,7 @@ function uploadFile() {
 
     // Construct the full SAS URL from your Azure portal information
     const sasToken = 'sp=rawd&st=2024-04-15T07:33:03Z&se=2024-05-31T15:33:03Z&sip=0.0.0.0-255.255.255.255&sv=2022-11-02&sr=c&sig=zkUX3UQya0Gd%2BM%2BGdAVtLrELBKWgOiHXGaHVTLvSfiQ%3D'; // Your SAS token without the leading "?"
-    const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web'; // URL to the Azure Blob Storage container
+    // URL to the Azure Blob Storage container
     const blobName = file.name; // Use the file's name as the blob name or set your own
     const fullUrl = `${blobServiceUrl}/${blobName}?${sasToken}`;
 
