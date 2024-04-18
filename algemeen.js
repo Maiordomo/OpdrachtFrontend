@@ -1,25 +1,29 @@
-// let backendurl = "https://yc2403webapp.azurewebsites.net"
+// let backendurl = "https://yc2403webapp.azurewebsites.net" align-items-center
 let backendurl = "http://127.0.0.1:5000/"
 
 function maakmenubalk() {
     document.getElementById("menubalk").innerHTML = `
     
-    <header class="py-3 mb-3 border-bottomd fixed-top">
+    <header class="py-3 mb-3 border-bottom fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <!-- Logo -->
         <a href="index.html"><img src="logo.png" class="img-thumbnail" alt="..."></a>
         
-        <div class="col d-flex align-items-center justify-content-center">
-            <a class="btn btn-primary" href="allerecepten.html" role="button">Alle recepten</a>
+        
+        <div class="row align-items-center">
+            <!-- Column for the "ALLE RECEPTEN" button -->
+            <div class="col">
+                <a class="btn btn-primary" href="allerecepten.html" role="button">ALLE RECEPTEN</a>
+            </div>
+            
+            <!-- Column for the search form -->
+            <div class="col">
+                <form class="w-300 mx-3" role="search">
+                    <input type="search" class="form-control" placeholder="Zoek recept..." aria-label="Search">
+                </form>
+            </div>
         </div>
-      
-      <!-- Search Form -->
-      <div class="row align-items-center justify-content-center" id="zoekbalk">
-        <form class="w-200 mx-3" role="search">
-          <input type="search" class="form-control" placeholder="Zoek recept..." aria-label="Search">
-        </form>
-      </div>
-      
+    </div>
 
         <!-- Dropdown Menu -->
         <div class="flex-shrink-0 dropdown pull"></div>
