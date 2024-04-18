@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="algemeen.js"></script>
+    <script>
+        function aanmakenrecept(){
+            let naamrecept = document.getElementById("naamreceptinvoer").value;
+            console.log(naamrecept)
+            let recept = {};
+            recept.naam = naamrecept;
+            let receptjson = JSON.stringify(recept);
+            fetch(backendurl + "recepttevoegen2temp", {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: receptjson
+            }).then( r => r.text())
+            .then(d => plaatsreceptid(d))
+        }
+        function plaatsreceptid(id){
+            document.getElementById("receptidinput").value = id;
+            document.getElementById("vervolgstappendiv").hidden = false;
+            toonreceptinhoud();
+        }
+        function staptoevoegen(){
+            console.log("stap toevoegen");
+            let receptid = document.getElementById("receptidinput").value;
+            let stap = {};
+            stap.Stapbeschrijving = document.getElementById("stapomschrijvinginput").value;
+            stap.volgorde = document.getElementById("stapvolgordeinput").value;
+            let stapjson = JSON.stringify(stap);
+            console.log(stapjson);
+            fetch(backendurl + "staptoevoegenaanrecept/"+receptid, {
+                method: 'POST', // Specify the method
+                headers: {
+                    'Content-Type': 'application/json', // Specify the content type
+                    // Add other headers if required
+                },
+                body: stapjson
+            }).then( r => r.text())
+            .then(d => toonreceptinhoud())
+        }
+        function toonreceptinhoud(){
+            console.log("toon receptinhoud");
+            var iddiejeuitguihaalt = document.getElementById("receptidinput").value;
+            fetch(backendurl+"receptdetails2temp/"+iddiejeuitguihaalt)
+            .then(r => r.json())
+            .then(d => verwerkafbeelding(d))
+        }
+    let stappen = []
+    function verwerkafbeelding(heelrecept){
+        console.log(heelrecept)
+        document.getElementById("receptnaampreview").innerHTML = heelrecept[0].naam;
+        for(let x = 0; x < heelrecept.length; x++){
+            if(heelrecept[0].Stapbeschrijving == null || findstap(heelrecept[x].Stapbeschrijving)){
+                console.log("null");
+            }else{
+                stappen.push([heelrecept[x].Stapbeschrijving, heelrecept[x].volgorde])
+            }
+        }
+        toonstappen();
+    }
+    function findstap(destring){
+        for(let y = 0; y< stappen.length; y++){
+            if(destring == stappen[y][0]){
+                return true;
+            }
+        }
+        return false;
+    }
+    function toonstappen(){
+        document.getElementById("stappenlijst").innerHTML = "";
+        for(let x = 0; x < stappen.length; x++){
+            document.getElementById("stappenlijst").innerHTML += "<br>"+stappen[x][1] +" - "+stappen[x][0]
+        }
+    }
+    </script>
+</head>
+<body>
+    naam recept:<input id="naamreceptinvoer"><br>
+    <button onclick="aanmakenrecept()">maak recept aan</button>  
+    <div id="vervolgstappendiv" hidden>
+        idrecept : <input id="receptidinput">
+        stap toevoegen:<br>
+        <textarea id="stapomschrijvinginput"></textarea><br>
+        <input id="stapvolgordeinput">
+        <button onclick="staptoevoegen()">voeg stap toe</button>
+        <div>
+            Recept Preview:
+            <div>
+                <div id="receptnaampreview">
+
+                </div>
+                <div id="stappenlijst">
+
+                </div>
+            </div>
+        </div>
+    </div>  
+</body>
+</html>
