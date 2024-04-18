@@ -75,13 +75,18 @@
 			document.getElementById("tag").innerHTML = document.getElementById("tag").innerHTML + " " + item.naamtag
 			})
 		
+			let reviews = d["review"]
+			let mijnreview 
+			reviews.forEach((item) => {
+    	mijnreview = "<br>" + "<span id='gebruikersnaam'>" + item.gebruikersnaam + "</span>" + "<br><br>" + item.beoordeling + "/5 sterren" + "<br><br>" + "<span id='reviewopmaak'>" + '"' + item.review + '"' + "</span>" + "<br><br>" 
+			
+			document.getElementById("gepostereview").innerHTML = document.getElementById("gepostereview").innerHTML + '<div class="border border-3">' + mijnreview + '</div>'
+			})
+			
 			}
 		</script>
 
 		<script>
-
-
-
 			function toonafbeeldingvanrecept(){
         fetch(backendurl+"/receptdetails/"+paramValue)
         .then(r => r.json())
@@ -89,17 +94,9 @@
     	}
 				toonafbeeldingvanrecept();
 		
-		
-
-				function verwerkafbeelding(d){
-					
-				
-					document.getElementById("fotogerecht").src = blobServiceUrl+ '/'+ d.recept.afbeelding;
-
-    }
-
-		
-		
+			function verwerkafbeelding(d){
+				document.getElementById("fotogerecht").src = blobServiceUrl+ '/'+ d.recept.afbeelding;
+			}
 		</script>
 
 		<link rel="stylesheet" href="main.css">
@@ -143,8 +140,10 @@
 			}
 
 			#fotodiv{
+				background-color: black;
 				width: 100%;
 				height: 600px;
+				margin: 0%;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -155,8 +154,19 @@
 				height: 100%;
 			}
 
+			#gebruikersnaam{
+				font-size: 20px;
+				font-weight: 500;
+			}
+
+			#reviewopmaak{
+				font-size: 15px;
+				font-style: italic;
+			}
+
 		</style>	
-			
+		
+		
 	</head>
 
 	<body>
@@ -170,9 +180,9 @@
 			
 			<div class="container">
 				<div class="row">
-					<span class="border border-3">
+					<span class="border border-3" style="padding: 0;">
 						<div class="col-12" id="fotodiv">
-							<img scr = 'niks.jpg' id="fotogerecht">
+							<img scr= 'niks.jpg' id="fotogerecht">
 						</div>
 					</span>
 				</div>
@@ -246,55 +256,13 @@
 				</div>
 
 				<div id="gepostereview">
-					<span class="border border-3">
-					Hier komen de geposte reviews
-					</span>
-				</div>
-			
-			</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<hr>
-Hieronder reviewopties als je ingelogd bent
-
-
-				<h3 style=text-align:center;"><b>Schrijf hier je review!</b></h3>
-				<hr>
-			
-				<div id="invoerveldnaam">
-					invoerveld om je naam in te vullen
-				</div>
-
-				<div id="hoeveelsterren">
-					invoerveld om aantal sterren op te geven
-				</div>
-
-				<div id="optioneelbeoordeling">
-					invoerveld met "Typ hier je beoordeling (optioneel)"
-				</div>
-
-
-				<div id="plaatsreviewbutton">
-				
-					<button type="button" onclick="alert('Je review is verzonden')">Plaatsen</button>
-
 				</div>
 
 			</div>
+    
+		<br>
+		<br>
 
-			<div id="gepostereview">
-
-				<div id="review">
-					van tabel review, recept_id: review
-				</div>
-
-			</div>
-			</div>
-      
 		</main>
 
 		<footer>
