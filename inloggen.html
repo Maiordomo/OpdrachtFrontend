@@ -31,7 +31,7 @@
                 // geslacht: geslacht,
                 // woonplaats: woonplaats
             };
-
+            console.log(userData)
             fetch(backendurl + "/login", {
                 method: 'POST', // Specify the method
                 headers: {
@@ -41,18 +41,27 @@
                 body: JSON.stringify(userData)
             })
 
-                .then(r => r.text())
-                .then(d => verwerkantwoord(d, JSON.stringify(userData)))
+                .then(r => r.json()
+                .then (data => {
+                    if (r.status == 201) {
+                        console.log (data)
+                        verwerkantwoord(true, data)
+                        }
+                    else { 
+                        console.log ("niet ingelogd")
+                        }
+                }))
         }
 
         function verwerkantwoord(a, b) {
-            console.log(a)
-            if (a == "ingelogd") {
-                localStorage.setItem("userData", b);
+            console.log(a,b)
+            if (a) {
+                let data = JSON.stringify(b)
+                localStorage.setItem("userData", data);
 
                 window.location.href = "accountpagina.html";
             }
-            else { alert("Het is niet gelukt") }
+            else { alert(a) }
         }
 
         function vraagwaardeop() {
@@ -78,6 +87,12 @@
     <div id="menubalk"></div>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container-sm">
         <div class="row">
             <div class="row-cols-sm-1">
@@ -88,13 +103,9 @@
                             Recipes te halen!</h2>
                         </p>
                     </blockquote>
-                    <figcaption class="blockquote-footer">
-                        Some product owner at <cite title="Source Title">YoungCapital</cite>
-                    </figcaption>
                 </figure>
                 <br>
                 <br>
-                <!-- <form action="http://127.0.0.1:5000/login" method="POST"> -->
                 <div class="mb-3">
                     <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
                     <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
@@ -121,7 +132,6 @@
                         <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
                     </figure>
                 </div>
-                <!-- </form> -->
             </div>
         </div>
         <br>
