@@ -12,23 +12,32 @@
     <script>
         window.onload = function(){
             maakmenubalk();
+            metdejson();
         }
     </script>
 
     <script>
+
+
 function metdejson(){
     fetch(backendurl + "/felixjson")
-    .then(r => r.json())
-    .then(d => verwerkdejson(d))
-}
-function verwerkdejson(allerecepten){
-    for(let x = 0; x < allerecepten.length; x++){
-        document.getElementById("dereceptendiv2").innerHTML += `
-            <h1>Recept ${x+1}: ${allerecepten[x].naam} - ${allerecepten[x].aantalsterren}</h1>
-            <a href="recept.html?gid=${allerecepten[x].id}" target="blank">Klik voor details</a>        `
-        
+    .then(r => r.json().then(d => {
+    voorthumbnail(d)
     }
-}  
+    ))
+}
+    
+function voorthumbnail(d){
+
+
+    for(let i = 0; i < 10; i++){
+        console.log("test", d[i])
+        let uniekrecept = "<br>" + d[i].naam + "<br><br>" + d[i].aantalsterren + "/5 sterren"  + "<br><br>"
+			
+		document.getElementById("thumbnails").innerHTML = document.getElementById("thumbnails").innerHTML + '<div class="uniekrecept border border-3">' + uniekrecept + '</div>'
+    }    
+
+}
 </script>
 
 </head>
@@ -40,17 +49,7 @@ function verwerkdejson(allerecepten){
     </header>
    
     <main>
-
-    <h1>allerecepten</h1>
-    <div class="container">
-        <button onclick="metdejson()">met de json</button>
-    <div id="dereceptendiv2">Hier komen onze recepten</div>
-    </div>
-
-<hr>
-<hr>
-<br>
-<br>    
+   
 
 <div class="container text-center">
     <div class="row justify-content-begin">
@@ -60,13 +59,18 @@ function verwerkdejson(allerecepten){
     </div>
     <br>
     <br>
+    
     <div class="row justify-content-center">
-        <div class="col-3">
+        <div class="col-3" id="thumbnailgerecht">
             <img class="imgresize" src="./testimages/burger200.png">
             <br>
+            <div id="titelgerecht">
             <a class="d" href="">Recept&nbsp;Naam</a>
-            <br>
+            </div>
+        
+            <div id="beoordelinggerecht">
             <a class="sterren" href="">5&nbsp;Sterren</a>
+            </div>
         </div>
         
         <div class="col-3">
@@ -160,6 +164,11 @@ function verwerkdejson(allerecepten){
     <br>
     <br>
 
+    <div id="thumbnails">
+
+    </div>
+
+
     <div class="row justify-content-center">
     <div class="col-3 justify-content-center">
     <nav aria-label="Page navigation example">
@@ -184,6 +193,8 @@ function verwerkdejson(allerecepten){
     </div>
     </div>
 </div>
+
+
 
     </main>
     <footer id="footerbalk">
