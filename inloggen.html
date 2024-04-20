@@ -18,50 +18,42 @@
         function sladitpermanentop() {
             let gebruikersnaam = document.getElementById("gebruikersnaam").value;
             let wachtwoord = document.getElementById("wachtwoord").value;
-            // let emailadres = document.getElementById("emailadres").value;
-            // let geboortedatum = document.getElementById("geboortedatum").value;
-            // let geslacht = document.getElementById("geslacht").value;
-            // let woonplaats = document.getElementById("woonplaats").value;
 
             let userData = {
                 gebruikersnaam: gebruikersnaam,
                 wachtwoord: wachtwoord
-                // emailadres: emailadres,
-                // geboortedatum: geboortedatum,
-                // geslacht: geslacht,
-                // woonplaats: woonplaats
+
             };
-            console.log(userData)
             fetch(backendurl + "/login", {
-                method: 'POST', // Specify the method
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // Specify the content type
-                    // Add other headers if required
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(userData)
             })
 
-                .then(r => r.json()
-                .then (data => {
-                    if (r.status == 201) {
-                        console.log (data)
-                        verwerkantwoord(true, data)
-                        }
-                    else { 
-                        console.log ("niet ingelogd")
-                        }
-                }))
+                .then(r => {
+                    if (r.status === 201) {
+                        return r.json();
+                    } else {
+                        throw new Error('Het inloggen is niet gelukt!');
+                    }
+                })
+                .then(data => {
+                    verwerkantwoord(true, data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message); // Display the error message from the caught error
+                });
         }
 
         function verwerkantwoord(a, b) {
-            console.log(a,b)
             if (a) {
-                let data = JSON.stringify(b)
+                let data = JSON.stringify(b);
                 localStorage.setItem("userData", data);
-
                 window.location.href = "accountpagina.html";
             }
-            else { alert(a) }
         }
 
         function vraagwaardeop() {
@@ -76,9 +68,11 @@
                 document.getElementById("geslacht").value = userData.geslacht;
                 document.getElementById("woonplaats").value = userData.woonplaats;
             } else {
-                console.log("No user data found in localStorage");
+                console.log("Geen data gevonden in localStorage");
+                alert("Het inloggen is niet gelukt!")
             }
         }
+
     </script>
     <title>Backyard Recipes - Inloggen</title>
 </head>
@@ -99,8 +93,8 @@
                 <figure class="text-center">
                     <blockquote class="blockquote">
                         <p>
-                        <h2>Maak een account aan om het maximale uit Backyard
-                            Recipes te halen!</h2>
+                        <h2>Log in om het maximale uit Backyard Recipes
+                            te halen!</h2>
                         </p>
                     </blockquote>
                 </figure>
