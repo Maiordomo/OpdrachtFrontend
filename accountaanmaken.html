@@ -32,7 +32,7 @@
                 woonplaats
             };
 
-            fetch(`${backendurl}/registreren`, {
+            fetch(backendurl + "/registreren", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -75,54 +75,53 @@
                 </figure>
                 <br>
                 <br>
-                <!-- <form action="http://127.0.0.1:5000/registreren" method="POST"> -->
-                    <div class="mb-3">
-                        <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
-                        <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
-                    </div>
-                    <div class="mb-3">
-                        <label for="wachtwoord" class="form-label">Wachtwoord</label>
-                        <input type="password" class="form-control" id="wachtwoord" name="wachtwoord">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Emailadres</label>
-                        <input type="email" class="form-control" id="emailadres" name="emailadres">
-                    </div>
-                    <div class="mb-3">
-                        <label for="geboortedatum" class="form-label">Geboortedatum</label>
-                        <input type="date" class="form-control" id="geboortedatum" name="geboortedatum">
-                    </div>
-                    <div class="mb-3">
-                        <label for="Geslacht" class="form-label">Geslacht</label>
-                        <select class="form-control" id="geslacht" name="geslacht">
-                            <option value="male">Man</option>
-                            <option value="female">Vrouw</option>
-                            <option value="other">Non-binair</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Woonplaats" class="form-label">Woonplaats</label>
-                        <input type="text" class="form-control" id="woonplaats" name="woonplaats">
-                    </div>
-                    <br>
-                    <div class="container-sm">
-                        <figure class="text-center">
-                            <h3 style="text-align: center;">Heb je al een account?
-                                <br>
-                                <a href="/inloggen.html" class="link-warning">Log hier in</a>
-                            </h3>
-                        </figure>
-                    </div>
-                    <br>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button class="btn btn-warning" type="button" onclick="registrerenbutton()">Aanmaken</button>
-                    </div>
-                <!-- </form> -->
+                <div class="mb-3">
+                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                </div>
+                <div class="mb-3">
+                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                    <input type="password" class="form-control" id="wachtwoord" name="wachtwoord">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Emailadres</label>
+                    <input type="email" class="form-control" id="emailadres" name="emailadres">
+                </div>
+                <div class="mb-3">
+                    <label for="geboortedatum" class="form-label">Geboortedatum</label>
+                    <input type="date" class="form-control" id="geboortedatum" name="geboortedatum">
+                </div>
+                <div class="mb-3">
+                    <label for="Geslacht" class="form-label">Geslacht</label>
+                    <select class="form-control" id="geslacht" name="geslacht">
+                        <option value="male">Man</option>
+                        <option value="female">Vrouw</option>
+                        <option value="other">Non-binair</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="Woonplaats" class="form-label">Woonplaats</label>
+                    <input type="text" class="form-control" id="woonplaats" name="woonplaats">
+                </div>
+                <br>
+                <div class="container-sm">
+                    <figure class="text-center">
+                        <h3 style="text-align: center;">Heb je al een account?
+                            <br>
+                            <a href="/inloggen.html" class="link-warning">Log hier in</a>
+                        </h3>
+                    </figure>
+                </div>
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-warning" type="button" onclick="registrerenbutton()">Aanmaken</button>
+                </div>
             </div>
         </div>
     </div>
     <br>
     <br>
+    <div id="footerbalk">de footer</div>
 </body>
 
 </html>
