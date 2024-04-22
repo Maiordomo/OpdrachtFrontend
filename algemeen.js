@@ -58,13 +58,12 @@ function maakmenubalk() {
         <footer class=" container-fluid">
             <div class="row">
                 <div class=" col-12">Bedankt voor het bezoeken van onze website! Fijne dag!</div>
-                <div class="col-md-4 col-12">Algemene voorwaarde</div>
-                <div class="col-md-4 offset-md-4 col-12">Privacybeleid</div>
+                <div class="col-md-4 col-12"><a href="algemenevoorwaarden.html">Algemene voorwaarde</a></div>
+                <div class="col-md-4 offset-md-4 col-12"><a href="privacybeleid.html">Privacybeleid</a></div>
             </div>
         </footer>   
         `
 }
-
 
 //<div><a href="index.html">home</a></div>  style="text-align: center;"
 
