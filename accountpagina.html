@@ -16,13 +16,62 @@
             maakmenubalk();
         }
 
+        let isEditMode = false;
+
+        //GEGEVENS WIJZIGEN TEST >
+        function editData() {
+            if (!isEditMode) {
+                document.getElementById("editGebruikersnaam").value = document.getElementById("gebruikersnaam").innerText;
+                document.getElementById("editWachtwoord").value = document.getElementById("wachtwoord").innerText;
+                document.getElementById("editEmailadres").value = document.getElementById("emailadres").innerText;
+                document.getElementById("editGeboortedatum").value = document.getElementById("geboortedatum").innerText;
+                document.getElementById("editGeslacht").value = document.getElementById("geslacht").innerText;
+                document.getElementById("editWoonplaats").value = document.getElementById("woonplaats").innerText;
+
+                document.querySelectorAll('[id^="edit"]').forEach(el => el.style.display = "block");
+                document.querySelectorAll('[id^="gebruikersnaam"], [id^="wachtwoord"], [id^="emailadres"], [id^="geboortedatum"], [id^="geslacht"], [id^="woonplaats"]').forEach(el => el.style.display = "none");
+
+                document.getElementById("editButton").innerText = "Opslaan";
+            }
+
+            isEditMode = !isEditMode;
+        }
+
+        function cancelEdit() {
+
+            // Laat invulvelden zien
+            document.querySelectorAll('[id^="edit"]').forEach(el => el.style.display = "none");
+            document.querySelectorAll('[id^="gebruikersnaam"], [id^="wachtwoord"], [id^="emailadres"], [id^="geboortedatum"], [id^="geslacht"], [id^="woonplaats"]').forEach(el => el.style.display = "block");
+
+            // Haal button weg
+            document.getElementById("cancelButton").style.display = "none";
+        }
+
+        function editData() {
+            if (!isEditMode) {
+                // Laat invulvelden zien
+                document.querySelectorAll('[id^="edit"]').forEach(el => el.style.display = "block");
+                document.querySelectorAll('[id^="gebruikersnaam"], [id^="wachtwoord"], [id^="emailadres"], [id^="geboortedatum"], [id^="geslacht"], [id^="woonplaats"]').forEach(el => el.style.display = "none");
+
+                // Change button text
+                document.getElementById("editButton").innerText = "Opslaan";
+
+                // Laat annuleren knop zien
+                document.getElementById("cancelButton").style.display = "inline-block";
+            }
+
+            isEditMode = !isEditMode;
+        }
+        //GEGEVENS WIJZIGEN TEST ^
+
         function renderUserData() {
             let userData = localStorage.getItem("userData");
             userData = JSON.parse(userData);
             if (userData) {
 
                 document.getElementById("gebruikersnaam").innerText = userData[1];
-                document.getElementById("wachtwoord").innerText = userData[2];
+                // document.getElementById("wachtwoord").innerText = userData[2];
+                document.getElementById("wachtwoord").innerText = "****"; 
                 document.getElementById("emailadres").innerText = userData[3];
                 document.getElementById("geboortedatum").innerText = userData[4];
                 document.getElementById("geslacht").innerText = userData[5];
@@ -56,23 +105,26 @@
                     <br>
                     <br>
                     <br>
+                    <br>
+                    <br>
+                    <br>
                     <p><a href="accountpagina.html"
-                            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mijn
+                            class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-0-hover">Mijn
                             gegevens</a></p>
                 </div>
                 <div class="mb-3 text-left">
                     <p><a href="mijnfavorieterecepten.html"
-                            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mijn
+                            class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-0-hover">Mijn
                             favoriete recepten</a></p>
                 </div>
                 <div class="mb-3 text-left">
                     <p><a href="mijnaangemaakterecepten.html"
-                            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mijn
+                            class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-0-hover">Mijn
                             aangemaakte recepten</a></p>
                 </div>
                 <div class="mb-3 text-left">
                     <p><a href="mijngeschrevenreviews.html"
-                            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Mijn
+                            class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-0-hover">Mijn
                             geschreven reviews</a></p>
                 </div>
             </div>
@@ -86,40 +138,57 @@
                 </figure>
                 <br>
                 <br>
-                <div class="mb-3 text-center">
-                    <label class="form-label">Gebruikersnaam:</label>
-                    <p class="form-control-static" id="gebruikersnaam"></p>
-                </div>
-                <div class="mb-3 text-center">
-                    <label class="form-label">Wachtwoord:</label>
-                    <p class="form-control-static" id="wachtwoord"></p>
-                </div>
-                <div class="mb-3 text-center">
-                    <label class="form-label">Emailadres:</label>
-                    <p class="form-control-static" id="emailadres"></p>
-                </div>
-                <div class="mb-3 text-center">
-                    <label class="form-label">Geboortedatum:</label>
-                    <p class="form-control-static" id="geboortedatum"></p>
-                </div>
-                <div class="mb-3 text-center">
-                    <label class="form-label">Geslacht:</label>
-                    <p class="form-control-static" id="geslacht"></p>
-                </div>
-                <div class="mb-3 text-center">
-                    <label class="form-label">Woonplaats:</label>
-                    <p class="form-control-static" id="woonplaats"></p>
+                <div style="border: 3px solid #000000; padding: 15px;">
+                    <div class="mb-3 d-flex flex-column">
+                        <label class="form-label text-center mb-2">Gebruikersnaam:</label>
+                        <p class="form-control-static text-center mb-2" id="gebruikersnaam"></p>
+                        <input type="text" class="form-control mb-2" id="editGebruikersnaam" style="display: none;">
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label class="form-label text-center mb-2">Wachtwoord:</label>
+                        <p class="form-control-static text-center mb-2" id="wachtwoord"></p>
+                        <input type="password" class="form-control mb-2" id="editWachtwoord" style="display: none;">
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label class="form-label text-center mb-2">Emailadres:</label>
+                        <p class="form-control-static text-center mb-2" id="emailadres"></p>
+                        <input type="email" class="form-control mb-2" id="editEmailadres" style="display: none;">
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label class="form-label text-center mb-2">Geboortedatum:</label>
+                        <p class="form-control-static text-center mb-2" id="geboortedatum"></p>
+                        <input type="date" class="form-control mb-2" id="editGeboortedatum" style="display: none;">
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label class="form-label text-center mb-2">Geslacht:</label>
+                        <p class="form-control-static text-center mb-2" id="geslacht"></p>
+                        <select class="form-control mb-2" id="editGeslacht" style="display: none;">
+                            <option value="Man">Man</option>
+                            <option value="Vrouw">Vrouw</option>
+                            <option value="Anders">Anders</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label class="form-label text-center mb-2">Woonplaats:</label>
+                        <p class="form-control-static text-center mb-2" id="woonplaats"></p>
+                        <input type="text" class="form-control mb-2" id="editWoonplaats" style="display: none;">
+                    </div>
                 </div>
                 <br>
                 <br>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-warning" type="button">Gegevens wijzigen</button>
+                    <button class="btn btn-warning" id="editButton" onclick="editData()">Gegevens wijzigen</button>
+                    <button class="btn btn-secondary" id="cancelButton" onclick="cancelEdit()"
+                        style="display: none;">Annuleren</button>
                 </div>
+                <br>
+                <br>
             </div>
         </div>
     </div>
     <br>
     <br>
+    <div id="footerbalk">de footer</div>
 </body>
 
 </html>

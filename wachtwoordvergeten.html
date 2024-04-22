@@ -23,7 +23,7 @@
                 return;
             }
 
-            fetch(`${backendurl}/checkemail`, {
+            fetch(backendurl + "/checkemail", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,9 +33,9 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.exists) {
-                        alert("Email verzonden!");
+                        alert("Wachtwoordreset e-mail verzonden.");
                     } else {
-                        alert("Email niet gevonden!");
+                        alert("Het door u ingevoerde e-mailadres is niet gevonden.");
                     }
                 })
                 .catch(error => {
@@ -89,6 +89,14 @@
         </div>
         <br>
         <br>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="footerbalk">de footer</div>
 </body>
 
 </html>
