@@ -58,6 +58,7 @@
 </head>
 
 <body>
+    <!-- Menubalk -->
     <div id="menubalk"></div>
     <br>
     <br>
@@ -66,67 +67,71 @@
     <br>
     <br>
     <br>
-    <br>
-    <div class="container-sm">
-        <div class="row">
-            <div class="row-cols-sm-1">
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <p>
-                        <h2>Maak een account aan om het maximale uit Backyard
-                            Recipes te halen!</h2>
-                        </p>
-                    </blockquote>
-                </figure>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="row justify-content-center">
+            <h2 style="white-space: nowrap;">Maak een account aan om het maximale uit Backyard Recipes te halen!</h2>
+            <div class="col-sm-6 text-center">
+                <br>
+                <!-- Formulier voor inloggen -->
+                <div class="custom-border">
+                    <div class="mb-3">
+                        <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                        <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                    </div>
+                    <div class="mb-3">
+                        <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                        <input type="password" class="form-control" id="wachtwoord" name="wachtwoord">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Emailadres</label>
+                        <input type="email" class="form-control" id="emailadres" name="emailadres">
+                    </div>
+                    <div class="mb-3">
+                        <label for="geboortedatum" class="form-label">Geboortedatum</label>
+                        <input type="date" class="form-control" id="geboortedatum" name="geboortedatum">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Geslacht" class="form-label">Geslacht</label>
+                        <select class="form-control" id="geslacht" name="geslacht">
+                            <option value="male">Man</option>
+                            <option value="female">Vrouw</option>
+                            <option value="other">Non-binair</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Woonplaats" class="form-label">Woonplaats</label>
+                        <input type="text" class="form-control" id="woonplaats" name="woonplaats">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="container-sm">
+                        <figure class="text-center">
+                            <h3 style="text-align: center;">Heb je al een account?
+                                <br>
+                                <a href="/inloggen.html" class="link-dark">Log hier in</a>
+                            </h3>
+                        </figure>
+                    </div>
+                </div>
                 <br>
                 <br>
-                <div class="mb-3">
-                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
-                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
-                </div>
-                <div class="mb-3">
-                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
-                    <input type="password" class="form-control" id="wachtwoord" name="wachtwoord">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Emailadres</label>
-                    <input type="email" class="form-control" id="emailadres" name="emailadres">
-                </div>
-                <div class="mb-3">
-                    <label for="geboortedatum" class="form-label">Geboortedatum</label>
-                    <input type="date" class="form-control" id="geboortedatum" name="geboortedatum">
-                </div>
-                <div class="mb-3">
-                    <label for="Geslacht" class="form-label">Geslacht</label>
-                    <select class="form-control" id="geslacht" name="geslacht">
-                        <option value="male">Man</option>
-                        <option value="female">Vrouw</option>
-                        <option value="other">Non-binair</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="Woonplaats" class="form-label">Woonplaats</label>
-                    <input type="text" class="form-control" id="woonplaats" name="woonplaats">
-                </div>
-                <br>
-                <div class="container-sm">
-                    <figure class="text-center">
-                        <h3 style="text-align: center;">Heb je al een account?
-                            <br>
-                            <a href="/inloggen.html" class="link-dark">Log hier in</a>
-                        </h3>
-                    </figure>
-                </div>
-                <br>
+                <!-- Knop voor registreren -->
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-warning" type="button" onclick="registrerenbutton()">Aanmaken</button>
                 </div>
+                <br>
             </div>
         </div>
     </div>
-    <br>
-    <br>
+    <!-- Footer -->
     <div id="footerbalk">de footer</div>
+
+    <style>
+        .custom-border {
+            border: 3px solid #000000;
+            padding: 15px;
+        }
+    </style>
 </body>
 
 </html>

@@ -89,45 +89,26 @@
 <body>
     <!-- Menubalk -->
     <div id="menubalk"></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container-sm">
-        <div class="row">
-            <div class="row-cols-sm-1">
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <p>
-                        <h2>Log in om het maximale uit Backyard Recipes
-                            te halen!</h2>
-                        </p>
-                    </blockquote>
-                </figure>
-                <br>
-                <br>
-                <div class="col-3">
-                </div>
-                <!-- Formulier voor inloggen -->
-                <div class="col-6 mx-auto">
-                    <div class="mb-3">
-                        <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
-                        <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
-                    </div>
-                    <div class="mb-3">
-                        <label for="wachtwoord" class="form-label">Wachtwoord</label>
-                        <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
-                    </div>
-                    <div class="container-sm">
-                        <figure class="text-end">
-                            <a href="/accountaanmaken.html" class="link-dark">Account aanmaken</a>
-                        </figure>
-                    </div>
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Log in om het maximale uit Backyard Recipes te halen!</h2>
+                <div class="col-sm-6 text-center">
                     <br>
+                    <!-- Formulier voor inloggen -->
+                    <div class="custom-border">
+                        <div class="mb-3">
+                            <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                            <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                        </div>
+                        <div class="mb-3">
+                            <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                            <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
+                        </div>
+                        <div class="text-end">
+                            <a href="/accountaanmaken.html" class="link-dark">Account aanmaken</a>
+                        </div>
+                    </div>
                     <br>
                     <br>
                     <br>
@@ -135,22 +116,20 @@
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
                     </div>
-                    <br>
-                    <div class="container-sm">
-                        <figure class="text-center">
-                            <a href="/wachtwoordvergeten.html" class="link-dark">Wachtwoord vergeten?</a>
-                        </figure>
-                    </div>
-                    <div class="col-3">
-                    </div>
+                    <a href="/wachtwoordvergeten.html" class="link-dark">Wachtwoord vergeten?</a>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
     </div>
     <!-- Footer -->
     <div id="footerbalk">de footer</div>
+
+    <style>
+        .custom-border {
+            border: 3px solid #000000;
+            padding: 15px;
+        }
+    </style>
 </body>
 
 </html>
