@@ -15,7 +15,9 @@
             maakmenubalk();
         }
 
+        // Functie om gebruikersgegevens te registreren
         function registrerenbutton() {
+            // Verzamelen van inputgegevens
             const gebruikersnaam = document.getElementById("gebruikersnaam").value;
             const wachtwoord = document.getElementById("wachtwoord").value;
             const emailadres = document.getElementById("emailadres").value;
@@ -23,6 +25,7 @@
             const geslacht = document.getElementById("geslacht").value;
             const woonplaats = document.getElementById("woonplaats").value;
 
+            // Object met gebruikersgegevens
             const userData = {
                 gebruikersnaam,
                 wachtwoord,
@@ -32,6 +35,7 @@
                 woonplaats
             };
 
+            // POST request naar backend voor registratie
             fetch(backendurl + "/registreren", {
                 method: "POST",
                 headers: {
@@ -41,6 +45,7 @@
             })
                 .then(response => response.json())
                 .then(data => {
+                    // Toon melding aan de gebruiker
                     alert(data.message);
                 })
                 .catch(error => {
@@ -49,7 +54,7 @@
                 });
         }
     </script>
-    <title>Backyard Recipes - Account Aanmaken</title>
+    <title>Account Aanmaken | Backyard Recipes</title>
 </head>
 
 <body>
@@ -108,7 +113,7 @@
                     <figure class="text-center">
                         <h3 style="text-align: center;">Heb je al een account?
                             <br>
-                            <a href="/inloggen.html" class="link-warning">Log hier in</a>
+                            <a href="/inloggen.html" class="link-dark">Log hier in</a>
                         </h3>
                     </figure>
                 </div>
