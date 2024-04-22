@@ -44,7 +44,7 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert(error.message); // Display the error message from the caught error
+                    alert(error.message);
                 });
         }
 
@@ -62,7 +62,6 @@
                 userData = JSON.parse(userData);
 
                 document.getElementById("gebruikersnaam").value = userData.gebruikersnaam;
-                document.getElementById("wachtwoord").value = userData.wachtwoord;
                 document.getElementById("emailadres").value = userData.emailadres;
                 document.getElementById("geboortedatum").value = userData.geboortedatum;
                 document.getElementById("geslacht").value = userData.geslacht;
@@ -100,36 +99,44 @@
                 </figure>
                 <br>
                 <br>
-                <div class="mb-3">
-                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
-                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                <div class="col-3">
                 </div>
-                <div class="mb-3">
-                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
-                    <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
-                </div>
-                <div class="container-sm">
-                    <figure class="text-end">
-                        <a href="/accountaanmaken.html" class="link-warning">Account aanmaken</a>
-                    </figure>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
-                </div>
-                <br>
-                <div class="container-sm">
-                    <figure class="text-center">
-                        <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
-                    </figure>
+                <div class="col-6 mx-auto">
+                    <div class="mb-3">
+                        <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                        <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                    </div>
+                    <div class="mb-3">
+                        <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                        <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
+                    </div>
+                    <div class="container-sm">
+                        <figure class="text-end">
+                            <a href="/accountaanmaken.html" class="link-warning">Account aanmaken</a>
+                        </figure>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
+                    </div>
+                    <br>
+                    <div class="container-sm">
+                        <figure class="text-center">
+                            <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
+                        </figure>
+                    </div>
+                    <div class="col-3">
+                    </div>
                 </div>
             </div>
         </div>
         <br>
         <br>
+    </div>
+    <div id="footerbalk">de footer</div>
 </body>
 
 </html>
