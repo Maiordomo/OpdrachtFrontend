@@ -12,6 +12,8 @@
     <script src="algemeen.js"></script>
     <script>
         window.onload = function () {
+            // Ophalen van gebruikersgegevens en aanmaken van menubalk bij het laden van de pagina
+            renderUserData();
             renderUserData();
             maakmenubalk();
         }
@@ -19,8 +21,11 @@
         let isEditMode = false;
 
         //GEGEVENS WIJZIGEN TEST >
+
+        // Functie om de gegevens te bewerken
         function editData() {
             if (!isEditMode) {
+                // Velden vullen met huidige gegevens
                 document.getElementById("editGebruikersnaam").value = document.getElementById("gebruikersnaam").innerText;
                 document.getElementById("editWachtwoord").value = document.getElementById("wachtwoord").innerText;
                 document.getElementById("editEmailadres").value = document.getElementById("emailadres").innerText;
@@ -28,18 +33,21 @@
                 document.getElementById("editGeslacht").value = document.getElementById("geslacht").innerText;
                 document.getElementById("editWoonplaats").value = document.getElementById("woonplaats").innerText;
 
+                // Velden en tekst verbergen/weergeven voor bewerking
                 document.querySelectorAll('[id^="edit"]').forEach(el => el.style.display = "block");
                 document.querySelectorAll('[id^="gebruikersnaam"], [id^="wachtwoord"], [id^="emailadres"], [id^="geboortedatum"], [id^="geslacht"], [id^="woonplaats"]').forEach(el => el.style.display = "none");
 
+                // Tekst van de knop aanpassen
                 document.getElementById("editButton").innerText = "Opslaan";
             }
 
             isEditMode = !isEditMode;
         }
 
+        // Functie om bewerking te annuleren
         function cancelEdit() {
 
-            // Laat invulvelden zien
+            // Tekst terugzetten naar originele staat
             document.querySelectorAll('[id^="edit"]').forEach(el => el.style.display = "none");
             document.querySelectorAll('[id^="gebruikersnaam"], [id^="wachtwoord"], [id^="emailadres"], [id^="geboortedatum"], [id^="geslacht"], [id^="woonplaats"]').forEach(el => el.style.display = "block");
 
@@ -64,11 +72,13 @@
         }
         //GEGEVENS WIJZIGEN TEST ^
 
+        // Functie om gebruikersgegevens uit localStorage te halen
         function renderUserData() {
             let userData = localStorage.getItem("userData");
             userData = JSON.parse(userData);
             if (userData) {
 
+                // Gebruikersgegevens invullen op de site
                 document.getElementById("gebruikersnaam").innerText = userData[1];
                 // document.getElementById("wachtwoord").innerText = userData[2];
                 document.getElementById("wachtwoord").innerText = "****"; 
@@ -83,7 +93,7 @@
         }
 
     </script>
-    <title>Backyard Recipes - Account Pagina</title>
+    <title>Account Pagina | Backyard Recipes</title>
 </head>
 
 <body>

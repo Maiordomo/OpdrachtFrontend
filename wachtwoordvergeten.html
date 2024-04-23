@@ -16,13 +16,16 @@
         }
 
         function checkEmail() {
+            // E-mailadres ophalen uit het inputveld
             const email = document.getElementById("emailadres").value;
 
+            // Controleren of een e-mailadres is ingevuld en of het een geldig formaat heeft
             if (!email || !email.includes("@")) {
                 alert("Vul een geldig e-mailadres in.");
                 return;
             }
 
+            // POST verzoek naar de backend om het e-mailadres te controleren
             fetch(backendurl + "/checkemail", {
                 method: 'POST',
                 headers: {
@@ -32,6 +35,7 @@
             })
                 .then(response => response.json())
                 .then(data => {
+                    // Bericht tonen op basis van de respons van de backend
                     if (data.exists) {
                         alert("Wachtwoordreset e-mail verzonden.");
                     } else {
@@ -45,58 +49,49 @@
         }
 
     </script>
-    <title>Backyard Recipes - Wachtwoord Vergeten</title>
+    <title>Wachtwoord Vergeten | Backyard Recipes</title>
 </head>
 
 <body>
+    <!-- Menubalk -->
     <div id="menubalk"></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container-sm">
-        <div class="row">
-            <div class="row-cols-sm-1">
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <p>
-                        <h2>Wachtwoord vergeten?
-                            <br>
-                            Vul hieronder je e-mailadres in om
-                            je wachtwoord te resetten.
-                        </h2>
-                        </p>
-                    </blockquote>
-                </figure>
+
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="row justify-content-center">
+            <h2>Wachtwoord vergeten?
                 <br>
+                Vul hieronder je e-mailadres in om
+                je wachtwoord te resetten.
+            </h2>
+            <div class="col-sm-6 text-center">
                 <br>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Emailadres</label>
-                    <input type="email" class="form-control" id="emailadres" name="emailadres">
+                <!-- Formulier voor wachtwoord reset -->
+                <div class="custom-border">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Emailadres</label>
+                        <input type="email" class="form-control" id="emailadres" name="emailadres">
+                    </div>
                 </div>
                 <br>
                 <br>
                 <br>
-                <br>
+                <!-- Knop voor wachtwoord reset -->
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-warning" onclick="checkEmail()">Versturen</button>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
     </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div id="footerbalk">de footer</div>
+
+    <!-- Footer -->
+    <div id="footerbalk">de footer</div>
+
+    <style>
+        .custom-border {
+            border: 3px solid #000000;
+            padding: 15px;
+        }
+    </style>
 </body>
 
 </html>
