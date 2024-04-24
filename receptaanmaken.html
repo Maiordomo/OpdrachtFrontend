@@ -18,30 +18,6 @@
         }
     </script>
     <style>
-        .div-standard {
-            margin-left: 5%;
-
-        }
-
-        .grid-container-element {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
-            border: 1px solid black;
-            width: 55%;
-            margin-left: 5%;
-        }
-
-        .grid-child-element1 {
-            margin-left: 10%;
-
-        }
-
-        .grid-child-element2 {
-            margin-left: 10%;
-            margin-right: 10%;
-
-        }
 
         .recept-header {
             display: flex;
@@ -56,20 +32,18 @@
             margin-bottom: 30px;
         }
 
-        #ingredientenpreview {
-            margin-top: 60px;
-        }
 
-        #receptnaampreview {
-            margin-top: 60px;
-        }
-
-        #alsohiddenatstart {
-            margin-top: 7.5%;
+        .custom-border {
+            border: 3px solid #000000;
+            padding: 15px;
         }
 
         #menubalk {
             margin-bottom: 10%;
+        }
+
+        #receptnaampreview {
+            margin-top: 4rem;
         }
     </style>
 
@@ -101,12 +75,15 @@
             document.getElementById("vervolgstappendiv").hidden = false;
             document.getElementById("hiddenatstart").hidden = false;
             document.getElementById("alsohiddenatstart").hidden = false;
+            document.getElementById("maak").setAttribute("hidden", "hidden");
+            document.getElementById("maak2").setAttribute("hidden", "hidden");
             document.getElementById("alsohiddenatstart").innerHTML = document.getElementById("naamreceptinvoer").value;
             toonreceptinhoud();
         }
         function staptoevoegen() {
             console.log("stap toevoegen");
             let receptid = document.getElementById("receptidinput").value;
+            document.getElementById("receptnaampreview").innerHTML = "Stappen voor de bereiding van " + document.getElementById("naamreceptinvoer").value + ":";
             let stap = {};
             stap.Stapbeschrijving = document.getElementById("stapomschrijvinginput").value;
             stap.volgorde = document.getElementById("stapvolgordeinput").value;
@@ -211,7 +188,6 @@
         let stappen = []
         function verwerkafbeelding(heelrecept) {
             console.log(heelrecept)
-            document.getElementById("receptnaampreview").innerHTML = "Stappen voor de bereiding van " + document.getElementById("naamreceptinvoer").value + ":";
             for (let x = 0; x < heelrecept.length; x++) {
                 if (heelrecept[0].Stapbeschrijving == null || findstap(heelrecept[x].Stapbeschrijving)) {
                     console.log("null");
@@ -283,41 +259,41 @@
 
     <div class="recept-header" id="alsohiddenatstart" hidden></div>
 
-    <div class="container">
+    <div class="container" id="maak">
         <div class="row">
             <div class="col-12">
                 Naam recept:<br>
-                <input id="naamreceptinvoer">
+                <input id="naamreceptinvoer" placeholder="...">
             </div>
 
 
             <div class="col-12">
                 Beschrijving:<br>
-                <input id="descriptionreceptinvoer">
+                <input id="descriptionreceptinvoer" placeholder="...">
             </div>
 
 
             <div class="col-12">
                 Bereidingstijd:<br>
-                <input id="difficultyinvoer">
+                <input id="difficultyinvoer" placeholder="...">
             </div>
         </div>
 
     </div>
 
-    <div class="container">
+    <div class="container" id="maak">
 
         <div class="row">
             <div class="col-12">
-                <button class="btn btn-primary mb-2" onclick="aanmakenrecept()">Maak recept aan</button>
+                <button class="btn btn-primary mb-2" id="maak2" onclick="aanmakenrecept()" >Maak recept aan</button>
             </div>
         </div>
 
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class ="col-2">
+    <div class="container overflow-hiden custom-border" id="vervolgstappendiv" hidden>
+        <div class="row gy-5">
+            <div class ="col-3 mx-auto" >
                 <form >
                     <div class="form-group sm-2">
                         <label for="exampleFormControlInput1">ID Recept:</label>
@@ -351,7 +327,7 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Stap omschrijving toevoegen:</label>
-                        <textarea class="form-control" id="stapomschrijvinginput" rows="1"></textarea>
+                        <textarea class="form-control" id="stapomschrijvinginput" rows="2"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -363,9 +339,9 @@
                 <input type="file" id="fileInput" /><br>
                 <button onclick="uploadFile()">Upload Afbeelding</button>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-2">
+        
+        
+            <div class="col-5 mx-auto" id="hiddenatstart" hidden>
                 <h3 id="previewtext"></h3>
             
                 <div id="tagspreview">
