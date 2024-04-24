@@ -63,7 +63,7 @@ h2{
   --Verydarkgray:#0D0D0D;
 }
 .btn{
-  background-color:var(--Softorange-);
+  background-color:var(--Softorange);
   color:var(--Verydarkgray);
   font-weight: bold;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
