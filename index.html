@@ -13,15 +13,13 @@
     function metdejson(){
     fetch(backendurl + "/felixjson")
     .then(r => r.json().then(d => {
-    voorthumbnail(d)
+    mikethumbnail(d)
     }
     ))
 }
     
-function voorthumbnail(d){
-
-
-    for(let i = 0; i < 25; i++){
+function mikethumbnail(d){
+    for(let i = 0; i < 4; i++){
         console.log("test", d[i])
         let afbeeldingrecept = blobServiceUrl + '/' + d[i].afbeelding
         let linkrecept = '<a href="recept.html?gid=' + d[i].id + '">' + d[i].naam + '</a>'
@@ -36,9 +34,26 @@ function voorthumbnail(d){
 
         let uniekrecept = '<br><a href="recept.html?gid=' + d[i].id + '"><img class="imgresize" src="' + afbeeldingrecept + '" alt="afbeeldingrecept"></a><br>' + linkrecept + '<br>' + beoordelingrecept + '<br>'
 			
-		document.getElementById("thumbnails").innerHTML = document.getElementById("thumbnails").innerHTML + '<div class="col-4 uniekrecept">' + uniekrecept + '</div>'
-    }    
+		document.getElementById("mikethumbnail").innerHTML = document.getElementById("mikethumbnail").innerHTML + '<div class="col-4 uniekrecept">' + uniekrecept + '</div>'
 
+    }
+        for(let i = 5; i < 9; i++){
+        console.log("test", d[i])
+        let afbeeldingrecept = blobServiceUrl + '/' + d[i].afbeelding
+        let linkrecept = '<a href="recept.html?gid=' + d[i].id + '">' + d[i].naam + '</a>'
+
+        let beoordelingrecept = ''
+        for (let j = 0; j < d[i].aantalsterren; j++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>'
+        }
+        for (let k = 0; k < (5 - d[i].aantalsterren); k++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>'
+        }
+
+        let uniekrecept = '<br><a href="recept.html?gid=' + d[i].id + '"><img class="imgresize" src="' + afbeeldingrecept + '" alt="afbeeldingrecept"></a><br>' + linkrecept + '<br>' + beoordelingrecept + '<br>'
+			
+		document.getElementById("mike2thumbnail").innerHTML = document.getElementById("mike2thumbnail").innerHTML + '<div class="col-4 uniekrecept">' + uniekrecept + '</div>'    
+    }
 }
 </script>
 
@@ -47,7 +62,7 @@ function voorthumbnail(d){
 <body>
 <div id="menubalk"></div>
 
-<div class="carousel-container">
+<div class="carousel-container" >
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 40%; max-height: 20%;">
         <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -88,9 +103,71 @@ carousel end
 -->
 
 <!--
-recepten rows en colomns
+recepten rows en colomns michael
 -->
+<div class="container text-center">
+    <div class="row justify-content-begin">
+        <div class="col justify-content-begin">
+    <h1>Populairste vleesgerechten</h1>
+        </div>
+    </div> 
+    <br>
+    <div class="row justify-content-center" id="mikethumbnail">
+    </div>
 
+    
+    <h1>Populairste vleesgerechten</h1>
+</div>
+</div> 
+<br>
+<div class="container text-center">
+    <div class="row justify-content-begin">
+        <div class="col justify-content-begin">
+    <h1>Populairste vleesgerechten</h1>
+        </div>
+    </div> 
+    <br>
+    <div class="row justify-content-center" id="mike2thumbnail">
+    </div>
+
+    <h2>Populairste vleesgerechten</h2>
+    <div class="gerechtvandeweek">
+        <img class="imgresizegerechtvandeweek" src="./testimages/burger200.png">
+        <br>
+        <a class="d" href="">Recept&nbsp;Naam</a>
+        <br>
+        <a class="sterren" href="">5&nbsp;Sterren</a>
+    </div>
+    <h2>Populairste visgerechten</h2>
+    <div class="row justify-content-center">
+    <div class="col-3 justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+</div>
+
+
+    <!--
+recepten rows en colomns die van Mike. Hierboven van Michael
+-->
 <div class="container">
     <p>Populairste vleesgerechten</p>
     <div class="row">
