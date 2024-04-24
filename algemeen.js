@@ -25,31 +25,49 @@ function maakmenubalk() {
             <div class="col">
                 
             </div>
+
+
+ 
+
         </div>
+
+
+
+
+
+         <div class="navbaricoontjes">  
+        <div class="col text-end">
+
+        <a class="button" href="receptaanmaken.html">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/017/350/122/small/add-icon-design-png.png"
+                alt="Bootstrap" width="60" height="48" />
+        </a>
+        <!-- </div>
+
+    <div class="row col-3"> -->
+        <a class="button" href="inloggen.html">
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/user-244.png"
+                alt="Bootstrap" width="60" height="48" />
+        </a>
+        <!-- </div>
+
+    <div class="row col-3"> -->
+        <a class="button" href="mijnfavorieterecepten.html">
+            <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png"
+                alt="Bootstrap" width="60" height="48" />
+        </button>
+    </div>
     </div>
 
-        <!-- Dropdown Menu -->
-        <div class="flex-shrink-0 dropdown pull"></div>
-        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown" aria-expanded="false">
-        </a>
-        <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
+
+
+    </div>
+
+       
     </div>
     <link rel="stylesheet" href="main.css">
 </header>
 
-    <div class="linkjes">      
-        <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
-        <div><a href="inloggen.html">inloggen</a></div>
-        <div><a href="receptaanmaken.html">receptaanmaken</a></div>
-    </div>
-    
         `;
     document.getElementById("footerbalk").innerHTML = `
     <div id="footerbalk"></div>
