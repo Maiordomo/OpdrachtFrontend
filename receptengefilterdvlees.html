@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alle Vleesrecepten | Backyard Recipes</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    
+    <script src="algemeen.js"></script>
+    <script>
+        window.onload = function(){
+            maakmenubalk();
+            metdejson();
+        }
+    </script>
+
+    <script>
+
+
+function metdejson(){
+    fetch(backendurl + "/felixjson")
+    .then(r => r.json().then(d => {
+    voorthumbnail(d)
+    }
+    ))
+}
+    
+function voorthumbnail(d){
+
+
+    for(let i = 0; i < 6; i++){
+        console.log("test", d[i])
+        let afbeeldingrecept = blobServiceUrl + '/' + d[i].afbeelding
+        let linkrecept = '<a href="recept.html?gid=' + d[i].id + '">' + d[i].naam + '</a>'
+
+        let beoordelingrecept = ''
+        for (let j = 0; j < d[i].aantalsterren; j++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>'
+        }
+        for (let k = 0; k < (5 - d[i].aantalsterren); k++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>'
+        }
+
+        let uniekrecept = '<br><a href="recept.html?gid=' + d[i].id + '"><img width="350px" height="260px" src="' + afbeeldingrecept + '" alt="afbeeldingrecept"></a><br>' + linkrecept + '<br>' + beoordelingrecept + '<br>'
+			
+		document.getElementById("thumbnails1").innerHTML = document.getElementById("thumbnails1").innerHTML + '<div class="col-4 uniekrecept">' + uniekrecept + '</div>'
+    }
+
+    for(let i = 6; i < 25; i++){
+        console.log("test", d[i])
+        let afbeeldingrecept = blobServiceUrl + '/' + d[i].afbeelding
+        let linkrecept = '<a href="recept.html?gid=' + d[i].id + '">' + d[i].naam + '</a>'
+
+        let beoordelingrecept = ''
+        for (let j = 0; j < d[i].aantalsterren; j++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>'
+        }
+        for (let k = 0; k < (5 - d[i].aantalsterren); k++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>'
+        }
+
+        let uniekrecept = '<br><a href="recept.html?gid=' + d[i].id + '"><img width="350px" height="260px" src="' + afbeeldingrecept + '" alt="afbeeldingrecept"></a><br>' + linkrecept + '<br>' + beoordelingrecept + '<br>'
+			
+		document.getElementById("thumbnails2").innerHTML = document.getElementById("thumbnails2").innerHTML + '<div class="col-4 uniekrecept">' + uniekrecept + '</div>'
+    } 
+    
+    for(let i = 23; i < 24; i++){
+        console.log("test", d[i])
+        let afbeeldingrecept = blobServiceUrl + '/' + d[i].afbeelding
+        let linkrecept = '<a href="recept.html?gid=' + d[i].id + '">' + d[i].naam + '</a>'
+
+        let beoordelingrecept = ''
+        for (let j = 0; j < d[i].aantalsterren; j++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>'
+        }
+        for (let k = 0; k < (5 - d[i].aantalsterren); k++) {
+            beoordelingrecept += '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16"><path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/></svg>'
+        }
+
+        let uniekrecept = '<a href="recept.html?gid=' + d[i].id + '"><img width="800px" height="400px" src="' + afbeeldingrecept + '" alt="afbeeldingrecept"></a><br>' + linkrecept + '<br>' + beoordelingrecept + '<br>'
+			
+		document.getElementById("receptspotlight").innerHTML = document.getElementById("receptspotlight").innerHTML + '<div class="col-8 uniekrecept">' + uniekrecept + '</div>'
+      }    
+}
+</script>
+
+<style>
+
+.bi{
+    display: inline;
+	margin-right: 5px;
+}
+				
+.bi-star-fill{
+	fill: rgb(182, 167, 30)
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+    <header>
+    <div id="menubalk"></div>
+    </header>
+   
+    <main>
+   
+
+<div class="container-fluid text-center">
+    
+    <div class="row text-center">
+
+    <div class="col-2" id="filtermenu">
+        <div class="container-fluid" style="padding-left: 30px;">
+            
+            <div class="row">
+                <div class="col-3">
+                <br>
+               <h3>Filters</h3> 
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+            </div>
+            <div class="row">
+                <h5>Hoofdingrediënt</h5>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Vlees
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Vis
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Kip
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Vega
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Overig
+                    </label>
+                  </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <h5>Soort bereiding</h5>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Gas
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Houtskool
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Salade
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Pizza oven
+                    </label>
+                  </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <h5>Moeilijkheidsgraad</h5>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      15 minuten
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      30 minuten
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      45 minuten
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      1 uur
+                    </label>
+                  </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <h5>Aantal sterren</h5>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      1 ster
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      2 sterren
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      3 sterren
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      4 sterren
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      5 sterren
+                    </label>
+                  </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-10">    
+
+    <div class="container-fluid">
+
+    <div class="row">
+        <div class="col-4 justify-content-begin" style="padding-left: 100px;">
+            <br>
+    <h3>Nieuwste Vleesgerechten</h3>
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="row justify-content-center" id="thumbnails1">
+    </div>
+    
+    <div class="row justify-content-center">
+    <h2>In de Spotlight</h2>
+    </div>
+    
+    <div class="row justify-content-center" id="receptspotlight">
+    </div>
+    <br>
+
+    <div class="row justify-content-center" id="thumbnails2">
+    </div>
+
+    <br>
+
+    <div class="row justify-content-center">
+    <div class="col-2 justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+    </main>
+    <footer id="footerbalk">
+
+    </footer>
+
+</div>
+</body>
+</html>
