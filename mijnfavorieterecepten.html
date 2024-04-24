@@ -10,16 +10,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <title>Mijn Favoriete Recepten</title>
-
+    <script src="algemeen.js"></script>
     <style>
-        div {
-            margin: 25px
-        }
-
-        .specialheader {
-            text-align: center;
-            margin: 100px;
-        }
+     
 
 
         .col-1 {
@@ -27,9 +20,11 @@
             padding-left: 115px;
 
         }
-        .colb{
+
+        .colb {
             margin-bottom: 100px;
         }
+
         .imgresize {
             width: 200px;
             height: 133px;
@@ -57,77 +52,27 @@
         .sterren {
             margin: 50px;
         }
-    </style>
 
+        #specialheader {
+            text-align: center;
+            margin-top: 10%;
+            margin-bottom: 5%;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            maakmenubalk();
+        }
+    </script>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row text-start">
-                <div class="col">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://img.freepik.com/free-vector/barbecue-logo-template-with-details_23-2149008099.jpg"
-                            alt="Bootstrap" width="30" height="24">
-                    </a>
-                </div>
+    <div id="menubalk"></div>
 
-                <div class="col d-flex align-items-center justify-content-center">
-                    <a class="btn btn-primary center" href="#" role="button">Alle Recepten</a>
-                    <!-- </div>
-				<div class="row col-12"> -->
-                    <!-- <form class="w-50 me-3 center" role="search">
-						<input
-							type="search"
-							class="form-control"
-							placeholder="Zoek recept..."
-							aria-label="Search"
-						/>
-					</form> -->
-                </div>
-
-                <div class="col text-end">
-
-                    <a class="navbar-brand" href="#">
-                        <img src="https://static.vecteezy.com/system/resources/thumbnails/017/350/122/small/add-icon-design-png.png"
-                            alt="Bootstrap" width="30" height="24" />
-                    </a>
-                    <!-- </div>
-
-				<div class="row col-3"> -->
-                    <a class="navbar-brand" href="#">
-                        <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/user-244.png"
-                            alt="Bootstrap" width="30" height="24" />
-                    </a>
-                    <!-- </div>
-
-				<div class="row col-3"> -->
-                    <button href="#" onclick="window.location = 'accountaanmaken.html'">
-                        <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png"
-                            alt="Bootstrap" width="30" height="24" />
-                    </button>
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="row align-items-center justify-content-center" id="zoekbalk">
-            <div class="col-3 align-items-center justify-content-center">
-                <form class="d-flex" role="search">
-                    <input type="search" class="form-control text-center" placeholder="Zoek mijn recept..."
-                        aria-label="Search" />
-                </form>
-            </div>
-        </div>
-
-    </header>
-
-    <div>
-        <h1 class="specialheader"> Mijn Favoriete Recepten </h1>
+    <div class="container" id="specialheader">
+        <h1>Mijn Favoriete Recepten</h1>
     </div>
-
-
-    </div>
-
 
     <div class="container">
         <div class="row">
@@ -164,12 +109,12 @@
         </div>
         <div class="row">
             <div class="col-1">
-            <img class="imgresize" src="./testimages/burger200.png">
-            <br>
-            <a class="d" href="">Recept&nbsp;Naam</a>
-            <br>
-            <a class="sterren" href="">5&nbsp;Sterren</a>
-        </div>
+                <img class="imgresize" src="./testimages/burger200.png">
+                <br>
+                <a class="d" href="">Recept&nbsp;Naam</a>
+                <br>
+                <a class="sterren" href="">5&nbsp;Sterren</a>
+            </div>
 
             <div class="col-1">
                 <img class="imgresize" src="./testimages/burger200.png">
@@ -232,12 +177,7 @@
         </div>
     </div>
 
-    <div>
-        <h4 class="specialheader">Bedankt voor het bezoeken van onze website. Fijne dag!</h4>
-    </div>
-    <div>
-        <a class="b" href="">Algemene voorwarden</a><a class="c" href="">Privacybeleid</a>
-    </div>
+    <div id="footerbalk">de footer</div>
 
 </body>
 
