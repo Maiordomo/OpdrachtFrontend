@@ -1,4 +1,4 @@
-// let backendurl = "https://yc2403webapp.azurewebsites.net" align-items-center
+// let backendurl = "https://yc2403webapp.azurewebsites.net/"  
 let backendurl = "http://127.0.0.1:5000/"
 const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web';
 
@@ -58,13 +58,12 @@ function maakmenubalk() {
         <footer class=" container-fluid">
             <div class="row">
                 <div class=" col-12">Bedankt voor het bezoeken van onze website! Fijne dag!</div>
-                <div class="col-md-4 col-12">Algemene voorwaarde</div>
-                <div class="col-md-4 offset-md-4 col-12">Privacybeleid</div>
+                <div class="col-md-4 col-12"><a href="algemenevoorwaarden.html">Algemene voorwaarde</a></div>
+                <div class="col-md-4 offset-md-4 col-12"><a href="privacybeleid.html">Privacybeleid</a></div>
             </div>
         </footer>   
         `
 }
-
 
 //<div><a href="index.html">home</a></div>  style="text-align: center;"
 
@@ -115,7 +114,7 @@ function staptoevoegen() {
     console.log(stap);
 
     
-    fetch("http://127.0.0.1:5000/receptaanmaken/"+stap,{mode:"cors"}).then(response => {
+    fetch(backendurl+"receptaanmaken/"+stap,{mode:"cors"}).then(response => {
         if (response.ok) {
             alert("Stap succesvol geüpload!");
         } else {
@@ -136,7 +135,7 @@ function receptnaamtoevoegen() {
     
 
     
-    fetch("http://127.0.0.1:5000/receptaanmaken/"+naam,{mode:"cors"}).then(response => {
+    fetch(backendurl+"receptaanmaken/"+naam,{mode:"cors"}).then(response => {
         if (response.ok) {
             alert("Recept Template succesvol gecreëerd!");
         } else {

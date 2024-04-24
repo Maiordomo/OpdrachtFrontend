@@ -4,26 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap JavaScript link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
+    <!-- Algemene JavaScript functies -->
     <script src="algemeen.js"></script>
     <script>
+        // Functie om de menubalk te maken bij laden pagina
         window.onload = function () {
             maakmenubalk();
         }
 
         function sladitpermanentop() {
+            // Data van gebruikersnaam en wachtwoord ophalen
             let gebruikersnaam = document.getElementById("gebruikersnaam").value;
             let wachtwoord = document.getElementById("wachtwoord").value;
 
+            // Gebruikersgegevens in een object opslaan (UserData)
             let userData = {
                 gebruikersnaam: gebruikersnaam,
                 wachtwoord: wachtwoord
-
             };
+
+            // POST verzoek naar de backend voor het inloggen
             fetch(backendurl + "/login", {
                 method: 'POST',
                 headers: {
@@ -33,6 +40,7 @@
             })
 
                 .then(r => {
+                    // Controleren of inloggen succesvol is
                     if (r.status === 201) {
                         return r.json();
                     } else {
@@ -40,96 +48,87 @@
                     }
                 })
                 .then(data => {
+                    // Verwerk het antwoord van de backend
                     verwerkantwoord(true, data);
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message); // Display the error message from the caught error
-                });
         }
 
         function verwerkantwoord(a, b) {
+            // Als het inloggen succesvol is, gebruikersgegevens opslaan in LocalStorage
             if (a) {
                 let data = JSON.stringify(b);
                 localStorage.setItem("userData", data);
+                // Doorsturen naar de accountpagina
                 window.location.href = "accountpagina.html";
             }
         }
 
         function vraagwaardeop() {
+            // Gebruikersgegevens ophalen uit LocalStorage
             let userData = localStorage.getItem("userData");
             if (userData) {
                 userData = JSON.parse(userData);
 
+                // Gebruikersgegevens in de velden van het formulier plaatsen op de accountpagina
                 document.getElementById("gebruikersnaam").value = userData.gebruikersnaam;
-                document.getElementById("wachtwoord").value = userData.wachtwoord;
                 document.getElementById("emailadres").value = userData.emailadres;
                 document.getElementById("geboortedatum").value = userData.geboortedatum;
                 document.getElementById("geslacht").value = userData.geslacht;
                 document.getElementById("woonplaats").value = userData.woonplaats;
             } else {
+                // Als er geen gegevens in localStorage zijn, foutmelding tonen
                 console.log("Geen data gevonden in localStorage");
                 alert("Het inloggen is niet gelukt!")
             }
         }
 
     </script>
-    <title>Backyard Recipes - Inloggen</title>
+    <title>Inloggen | Backyard Recipes</title>
 </head>
 
 <body>
+    <!-- Menubalk -->
     <div id="menubalk"></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="container-sm">
-        <div class="row">
-            <div class="row-cols-sm-1">
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <p>
-                        <h2>Log in om het maximale uit Backyard Recipes
-                            te halen!</h2>
-                        </p>
-                    </blockquote>
-                </figure>
-                <br>
-                <br>
-                <div class="mb-3">
-                    <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
-                    <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
-                </div>
-                <div class="mb-3">
-                    <label for="wachtwoord" class="form-label">Wachtwoord</label>
-                    <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
-                </div>
-                <div class="container-sm">
-                    <figure class="text-end">
-                        <a href="/accountaanmaken.html" class="link-warning">Account aanmaken</a>
-                    </figure>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
-                </div>
-                <br>
-                <div class="container-sm">
-                    <figure class="text-center">
-                        <a href="/wachtwoordvergeten.html" class="link-warning">Wachtwoord vergeten?</a>
-                    </figure>
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Log in om het maximale uit Backyard Recipes te halen!</h2>
+                <div class="col-sm-6 text-center">
+                    <br>
+                    <!-- Formulier voor inloggen -->
+                    <div class="custom-border">
+                        <div class="mb-3">
+                            <label for="gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                            <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
+                        </div>
+                        <div class="mb-3">
+                            <label for="wachtwoord" class="form-label">Wachtwoord</label>
+                            <input type="password" id="wachtwoord" class="form-control" name="wachtwoord">
+                        </div>
+                        <div class="text-end">
+                            <a href="/accountaanmaken.html" class="link-dark">Account aanmaken</a>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <!-- Knop voor inloggen -->
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <input class="btn btn-warning" type="button" value="Inloggen" onclick="sladitpermanentop()">
+                    </div>
+                    <a href="/wachtwoordvergeten.html" class="link-dark">Wachtwoord vergeten?</a>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
+    </div>
+    <!-- Footer -->
+    <div id="footerbalk">de footer</div>
+
+    <style>
+        .custom-border {
+            border: 3px solid #000000;
+            padding: 15px;
+        }
+    </style>
 </body>
 
 </html>
