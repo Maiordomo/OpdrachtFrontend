@@ -1,10 +1,8 @@
-<div id="menubalk"></div>
-<script src="algemeen.js"></script>
-<h1>Felix zijn bestand 1</h1>
+<h1>Felix zijn bestand</h1>
 <script>
     function haalopbijpython(){
-        console.log("hij doet het VIA AZURE");
-        fetch("https://yc2403webapp.azurewebsites.net/felix2")
+        console.log("hij doet het");
+        fetch("http://127.0.0.1:5000/felix2")
         .then(r => r.text())
         .then(d => verwerk(d))
     }
@@ -16,16 +14,12 @@
         let obernaam = document.getElementById("invoerveld").value;
         fetch("http://127.0.0.1:5000/felix3/"+obernaam)
     }
-    window.onload = function(){
-        console.log("dit wordt geladen zodra de file felix.html klaar is met laden");
-        maakmenubalk();
-    }
 </script>
-<a href="felix2.html">naar felix2.html</a>
+
 Voer de naam van de ober in: <input id="invoerveld">
 <button onclick="slaoberop()">Verstuur</button>
 <hr><hr><hr>
-<button onclick="haalopbijpython()">Klik hier VIA AZURE</button>
+<button onclick="haalopbijpython()">Klik hier</button>
 <div id="uitkomst"></div>
 
 
@@ -59,11 +53,11 @@ NIEUWvvvvvvv
         let waarderingrecept = document.getElementById("waardeinvoer").value;
         console.log(naamrecept);
         console.log(waarderingrecept);
-//        fetch("http://127.0.0.1:5000/erik/"+naamrecept+"/"+waarderingrecept)
-        fetch(`http://127.0.0.1:5000/erik/${naamrecept}/${waarderingrecept}`)
+//        fetch("http://127.0.0.1:5000/erik1/"+naamrecept+"/"+waarderingrecept)
+        fetch(`http://127.0.0.1:5000/erik1/${naamrecept}/${waarderingrecept}`)
     }
     function metdejson(){
-        fetch("https://yc2403webapp.azurewebsites.net:5000/felixjson")
+        fetch("http://127.0.0.1:5000/felixjson")
         .then(r => r.json())
         .then(d => verwerkdejson(d))
     }
