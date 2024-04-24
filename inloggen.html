@@ -38,7 +38,6 @@
                 },
                 body: JSON.stringify(userData)
             })
-
                 .then(r => {
                     // Controleren of inloggen succesvol is
                     if (r.status === 201) {
@@ -51,6 +50,10 @@
                     // Verwerk het antwoord van de backend
                     verwerkantwoord(true, data);
                 })
+                .catch(error => {
+                    // Foutmelding tonen bij niet succesvol inloggen
+                    alert(error.message);
+                });
         }
 
         function verwerkantwoord(a, b) {
