@@ -1,5 +1,5 @@
-let backendurl = "https://yc2403webapp.azurewebsites.net/"  
-// let backendurl = "http://127.0.0.1:5000/"
+// let backendurl = "https://yc2403webapp.azurewebsites.net/"  
+let backendurl = "http://127.0.0.1:5000/"
 const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web';
 
 function maakmenubalk() {
@@ -58,7 +58,7 @@ function maakmenubalk() {
         <footer class=" container-fluid">
             <div class="row">
                 <div class=" col-12">Bedankt voor het bezoeken van onze website! Fijne dag!</div>
-                <div class="col-md-4 col-12"><a href="algemenevoorwaarden.html">Algemene voorwaarde</a></div>
+                <div class="col-md-4 col-12"><a href="algemenevoorwaarden.html">Algemene voorwaarden</a></div>
                 <div class="col-md-4 offset-md-4 col-12"><a href="privacybeleid.html">Privacybeleid</a></div>
             </div>
         </footer>   
