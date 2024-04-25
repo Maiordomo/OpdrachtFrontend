@@ -26,6 +26,7 @@
             font-weight: bold;
             padding-top: 1%;
             text-transform: capitalize;
+            margin-top: 180px;
         }
 
         #previewtext {
@@ -48,6 +49,12 @@
 
        #maak2 {
         margin-bottom: 10%;
+        margin-top: 0.5%;
+       }
+
+       #maaktext {
+        font-weight: bold;
+        font-size: x-large;
        }
 
     </style>
@@ -215,7 +222,6 @@
         let tags = []
         function verwerkafbeelding3(heelrecept3) {
             console.log(heelrecept3)
-            document.getElementById("tagspreview").innerHTML = "Tags: ";
             for (let x = 0; x < heelrecept3.length; x++) {
                 if (heelrecept3[0].itags == null || findtag(heelrecept3[x].itags)) {
                     console.log("null");
@@ -265,8 +271,9 @@
     <div class="recept-header" id="alsohiddenatstart" hidden></div>
     
     <div class="container" id="maak">
-        <div class="row">
-            <div class="col-12">
+        <text id="maaktext">Maak recept template aan:</text>
+        <div class="row custom-border">
+            <div class="col-12 ">
                 Naam recept:<br>
                 <input id="naamreceptinvoer" placeholder="...">
             </div>
@@ -282,6 +289,9 @@
                 Bereidingstijd:<br>
                 <input id="difficultyinvoer" placeholder="...">
             </div>
+            <div class="col-12">
+                <button class="btn btn-primary mb-2" id="maak2" onclick="aanmakenrecept()" >Maak recept aan</button>
+            </div>
         </div>
 
     </div>
@@ -289,9 +299,7 @@
     <div class="container" id="maak2">
 
         <div class="row">
-            <div class="col-12">
-                <button class="btn btn-primary mb-2" id="maak2" onclick="aanmakenrecept()" >Maak recept aan</button>
-            </div>
+           
         </div>
 
     </div>
