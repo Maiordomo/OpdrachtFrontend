@@ -110,7 +110,7 @@ function uploadFile() {
         body: file,
     }).then(response => {
         if (response.ok) {
-            alert("Afbeelding succesvol geüpload!");
+            alert("Afbeelding succesvol geupload!");
         } else {
             alert("Upload mislukt. Statuscode: " + response.status);
         }
@@ -129,7 +129,7 @@ function staptoevoegen() {
 
     fetch(backendurl + "receptaanmaken/" + stap, { mode: "cors" }).then(response => {
         if (response.ok) {
-            alert("Stap succesvol geüpload!");
+            alert("Stap succesvol geupload!");
         } else {
             alert("Upload mislukt. Statuscode: " + response.status);
         }
