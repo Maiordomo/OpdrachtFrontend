@@ -10,8 +10,8 @@ nav{
    border-radius: 30px;
 }
 .logo{
-  max-height: 100px;
-  max-width: 100px;
+  max-height: 180px;
+  max-width: 180px;
 }
 .navbaricoontjes{
   text-align: right;
@@ -134,18 +134,14 @@ h1 {
 
  header{
   /* Radial gradient */
-
 background: linear-gradient(var(--Softyellow),var(--Verydarkgray));
-
-
 /* Elliptical radial gradient 
 background: radial-gradient(ellipse, #ff0000, #0000ff);
 background-color:var(--kleur-een);
 /* Radial gradient with different shape and size 
 background: radial-gradient(circle closest-side, #ff0000, #0000ff);*/
-
-  
-    height: 130px;
+    height: 210px;
+    padding-bottom: 220px;
    
   }
 
