@@ -16,6 +16,14 @@ nav{
 .navbaricoontjes{
   text-align: right;
 }
+.bi{
+  display: inline;
+  margin-right: 5px;
+}
+
+.bi-star-fill{
+  fill: rgb(182, 167, 30)
+}
 
 .carousel-container {
   justify-content: center; /* Align container horizontally */
