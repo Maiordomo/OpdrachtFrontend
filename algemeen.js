@@ -1,5 +1,5 @@
-// let backendurl = "https://yc2403webapp.azurewebsites.net/"  
-let backendurl = "http://127.0.0.1:5000/"
+let backendurl = "https://yc2403webapp.azurewebsites.net/"  
+//let backendurl = "http://127.0.0.1:5000/"
 const blobServiceUrl = 'https://felixuploadimages.blob.core.windows.net/$web';
 
 function maakmenubalk() {
@@ -7,51 +7,64 @@ function maakmenubalk() {
     
     <header class="py-3 mb-3 border-bottom fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
+        <div class="col-4">
         <!-- Logo -->
         <div class="logo">
             <a href="index.html"><img src="logo.png" class="img-thumbnail" alt="..."></a>
         </div>
-        <a class="btn btn-primary" href="allerecepten.html" role="button">ALLE RECEPTEN</a>
+        </div>
+        
 
-        <div class="row align-items-center">
-            <!-- Column for the "ALLE RECEPTEN" button -->
-            <div class="col">
-                
+        <div class="col-4">
+            <div class="row justify-content-center align-items-center">
+             <a class="btn btn-primary" href="allerecepten.html" role="button">ALLE RECEPTEN</a>
             </div>
+
+        <div class="row justify-content-center align-items-center">
             <form class="w-300 mx-3" role="search">
                     <input type="search" class="form-control" placeholder="Zoek recept..." aria-label="Search">
                 </form>
-            <!-- Column for the search form -->
-            <div class="col">
-                
-            </div>
-        </div>
+           
+        </div>  
     </div>
 
-        <!-- Dropdown Menu -->
-        <div class="flex-shrink-0 dropdown pull"></div>
-        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown" aria-expanded="false">
+
+
+
+<div class="col-4">
+         <div class="navbaricoontjes">  
+        <div class="col text-end">
+
+        <a class="button" href="receptaanmaken.html">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/017/350/122/small/add-icon-design-png.png"
+                alt="Bootstrap" width="80" height="65" />
         </a>
-        <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
+        <!-- </div>
+
+    <div class="row col-3"> -->
+        <a class="button" href="inloggen.html">
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/two-color-webpage-small-icon/user-244.png"
+                alt="Bootstrap" width="80" height="65" />
+        </a>
+        <!-- </div>
+
+    <div class="row col-3"> -->
+        <a class="button" href="mijnfavorieterecepten.html">
+            <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png"
+                alt="Bootstrap" width="80" height="65" />
+        </button>
+    </div>
+    </div>
+    </div>
+
+
+    </div>
+
+       
     </div>
     <link rel="stylesheet" href="main.css">
 </header>
 
-    <div class="linkjes">      
-        <div><a href="allerecepten.html">alle recepten</a></div>
-        <div><a href="mijnfavorieterecepten.html">mijn favoriete recepten</a></div>
-        <div><a href="inloggen.html">inloggen</a></div>
-        <div><a href="receptaanmaken.html">receptaanmaken</a></div>
-        <div><a href="erik.html">testpagina 1 erik</a></div>
-    </div>
-    
         `;
     document.getElementById("footerbalk").innerHTML = `
     <div id="footerbalk"></div>
@@ -113,8 +126,8 @@ function staptoevoegen() {
     let stap = document.getElementById("stapinvoer").value;
     console.log(stap);
 
-    
-    fetch(backendurl+"receptaanmaken/"+stap,{mode:"cors"}).then(response => {
+
+    fetch(backendurl + "receptaanmaken/" + stap, { mode: "cors" }).then(response => {
         if (response.ok) {
             alert("Stap succesvol geüpload!");
         } else {
@@ -123,7 +136,7 @@ function staptoevoegen() {
     })
         .catch(error => {
             console.error("Fout tijdens het uploaden:", error);
-        });     
+        });
     //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
 }
 
@@ -131,11 +144,11 @@ function receptnaamtoevoegen() {
     console.log("naaminvoer");
     let naam = document.getElementById("naaminvoer").value;
     console.log(naam);
-    document.getElementById("omschrijving").innerHTML = "Omschrijving van recept: " + naam ;
-    
+    document.getElementById("omschrijving").innerHTML = "Omschrijving van recept: " + naam;
 
-    
-    fetch(backendurl+"receptaanmaken/"+naam,{mode:"cors"}).then(response => {
+
+
+    fetch(backendurl + "receptaanmaken/" + naam, { mode: "cors" }).then(response => {
         if (response.ok) {
             alert("Recept Template succesvol gecreëerd!");
         } else {
@@ -144,6 +157,6 @@ function receptnaamtoevoegen() {
     })
         .catch(error => {
             console.error("Fout tijdens het creëren:", error);
-        });     
+        });
     //fetch(`https://yc2403webapp.azurewebsites.net/erik/${naamrecept}/${waarderingrecept}`)
 }
