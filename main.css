@@ -153,6 +153,14 @@ background: radial-gradient(circle closest-side, #ff0000, #0000ff);*/
    
   }
 
+  a{
+    color: #0D0D0D;
+  }
+
+  main{
+    margin-top: 140px;
+  }
+
   .linkjes{
     top: 130px;
     position: absolute;
